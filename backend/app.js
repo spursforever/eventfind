@@ -13,7 +13,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cookieParser());
 app.use(express.json());
-app.use(routes); 
+
 
 // Security Middleware
 if (!isProduction) {
@@ -39,7 +39,7 @@ if (!isProduction) {
     })
 
   );
-
+app.use(routes); 
 // Catch unhandled requests and forward to error handler.
  app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
@@ -70,5 +70,5 @@ app.use((err, _req, res, _next) => {
       stack: isProduction ? null : err.stack
     });
   });
-  
+
  module.exports = app;
