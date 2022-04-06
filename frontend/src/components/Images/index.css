@@ -1,0 +1,15 @@
+.images {
+    padding: 1rem;
+    column-count: 4;
+    column-gap: 15rem;
+    margin: 150px auto 150px auto;
+}
+
+.images-itself {
+    position: absolute;
+    flex-flow: wrap;
+    justify-content: center;
+    top: 250px;
+    width: 100%;
+    display: flex;
+}
