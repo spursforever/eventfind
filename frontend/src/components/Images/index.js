@@ -18,16 +18,16 @@ const Images =  () => {
     }, [dispatch])
     
 return (
-    <div >
-    
-      {sessionImages?.map(({ imageUrl, id, content }) => (
+    <div className="images">
+        <div className="images-itself">
+          {sessionImages?.map(({ imageUrl, id, content }) => (
         <SingleImage
           key={id}
           id={id}
           imageUrl={imageUrl}
           content={content}
         />
-      ))}
+      ))} </div>
       <Route path="images/:id">
         <SingleImage images={images} />
       </Route>
