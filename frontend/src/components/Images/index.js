@@ -3,7 +3,7 @@ import { getImage } from "../../store/images"
 import { useEffect } from "react"
 import SingleImage from "../SingleImage"
 import { Route } from "react-router-dom"
-
+import "./index.css"
 
 const Images =  () => {
     const dispatch = useDispatch();
