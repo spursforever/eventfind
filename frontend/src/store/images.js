@@ -57,21 +57,49 @@ export const getOneImage = (id) => async (dispatch) => {
     }
 }
 
-// export const updateImage = (id) => async (dispatch) => {
-//     const response = await csrfFetch(`/api/images/${images.id}`,
-//     {method: 'put',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(id)
-//     });
-//     if (response.ok) {
-//         const image = await response.json();
-//         dispatch(addImage(image))
-//         return image
-//     }
-// }
+export const updateImage = (image) => async (dispatch) => {
+    const response = await csrfFetch(`/api/images/${image.id}`,
+    {method: 'put',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(image.id)
+    });
+    if (response.ok) {
+        const image = await response.json();
+        dispatch(addImage(image))
+        return image
+    }
+}
 
+export const createImage = (newImage) => async (dispatch) => {
+  const { userId, imageUrl, description } = newImage;
+  const response = await csrfFetch("/api/images", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userId,
+      imageUrl,
+      description,
+    }),
+  });
+
+  
+
+  const data = await response.json();
+  
+  dispatch(addImage(data.id));
+  return response;
+};
+
+export const deleteImage = (image) => async (dispatch) => {
+  const response = await csrfFetch(`/api/images/${image.id}`, {
+    method: "DELETE",
+  });
+  const data = await response.json();
+  dispatch(removeImage(data.id));
+  return response;
+};
 
     const initialState = {}
     

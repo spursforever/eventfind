@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Images from "./components/Images";
 import SingleImage from "./components/SingleImage";
+import ImageUpload from "./components/ImageUpload"
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/images/upload">
+            <ImageUpload />
           </Route>
                             
         </Switch>
