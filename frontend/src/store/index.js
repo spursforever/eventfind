@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import {  combineReducers, applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
