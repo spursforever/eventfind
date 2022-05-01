@@ -18,6 +18,16 @@ function LoginForm() {
       }
     );
   };
+  const demologin =  () => (
+    <button
+      onClick ={(e) => {
+        setCredential("demo@user.io");
+        setPassword("password");
+      }}
+      >
+      Demo User Login
+    </button>
+  )
 
   return (
     <form onSubmit={handleSubmit}>
@@ -45,6 +55,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      {demologin()}
     </form>
   );
 }
