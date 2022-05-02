@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Event.associate = function(models) {
     // associations can be defined here
-    Event.belongsTo(models.Category, { foreignKey: "categoryId" }); 
-    Event.belongsTo(models.User, { foreignKey: "userId" }); 
     Event.hasMany(models.Ticket, { foreignKey: "eventId", onDelete: 'CASCADE', hooks: true }); 
+    Event.belongsTo(models.User, { foreignKey: "userId" }); 
+    Event.belongsTo(models.Category, { foreignKey: "categoryId" }); 
   };
   return Event;
 };

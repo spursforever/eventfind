@@ -10,32 +10,31 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        references: { model: "Users"}
+        allowNull: false,
       },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        allowNull: false,
-        references: {model: "Categories"}
       },
       name: {
-        type: Sequelize.STRING(60)
+        type: Sequelize.STRING(60),
+        allowNull: false,
       },
       description: {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      imageUrl: {
+      imageUrl: { 
+        type: Sequelize.STRING(400),
         allowNull: false,
-        type: Sequelize.STRING(320)
       },
       date: {
         type: Sequelize.DATEONLY,
-        allowNull: false
+        allowNull: false,
       },
       location: {
-        type: Sequelize.STRING(40),
-        allowNull: false
+        type: Sequelize.STRING(80),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
