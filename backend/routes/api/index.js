@@ -7,7 +7,7 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('events', eventsRouter)
+router.use('/events', eventsRouter)
 
 
 module.exports = router;

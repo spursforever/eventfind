@@ -20,7 +20,7 @@ const singleEvent = (event) => {
 
 // thunking the beautiful action creators
 export const displayAllEvents = () => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/event`);
+    const backendResponse = await csrfFetch(`/api/events`);
     if (backendResponse.ok) {
         const events = await backendResponse.json();
         dispatch(allEvents(events))
@@ -29,7 +29,7 @@ export const displayAllEvents = () => async dispatch => {
 }
 
 export const displaySingleEvent = (id) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/event/${id}`);
+    const backendResponse = await csrfFetch(`/api/events/${id}`);
     if (backendResponse.ok) {
         const event = await backendResponse.json()
         dispatch(singleEvent(event))
@@ -37,4 +37,24 @@ export const displaySingleEvent = (id) => async dispatch => {
     }
 
 }
+
 // my biggest fear: the reducer...
+ const eventsReducer = (state= {}, action) => {
+     let updatedState;
+     switch (action.type) {
+         case ALL_EVENTS:
+            updatedState={...state};
+            action.events.forEach((event) => {
+                updatedState[event.id] = event
+            })
+            return updatedState;
+        case SINGLE_EVENT:
+            updatedState= {...state};
+            updatedState[action.event.id] = action.event
+            return updatedState
+            default:
+                return state;
+     }
+ }
+
+ export default eventsReducer

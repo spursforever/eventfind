@@ -6,6 +6,7 @@ const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
 const router = express.Router()
 const { Event } = require('../../db/models')
+
 const eventValidation = [
     check('name')
     .exists({ checkFalsy: true })
