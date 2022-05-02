@@ -1,5 +1,10 @@
 # Eventfind
-Welcome to Eventfind! This project is inspired by Eventbrite where users can view and create their own desire events. 
+Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.eventbrite.com/) where users can view and create their own desire events.
+
+## Link to Livesite
+
+## Technologies Used
+
 ## Getting Started
 1. Clone this repistory
 
@@ -24,3 +29,10 @@ Welcome to Eventfind! This project is inspired by Eventbrite where users can vie
     ```npm start```
 
 7. You can sign in via Demo User or create an account yourself
+
+## Database Schema
+![drawSQL-export-2022-05-01_13_36](https://user-images.githubusercontent.com/94093737/166179917-82286b4b-ec00-44f7-8371-4b350260e8d3.png)
+
+## Features
+
+
