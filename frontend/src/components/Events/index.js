@@ -2,6 +2,8 @@ import {Link} from "react-router-dom"
 import { useState, useEffect } from "react"
 import {useDispatch, useSelector} from "react-redux"
 import { displayAllEvents } from "../../store/event"
+import './Events.css'
+
 const Events = () => {
     const [allEvents, setAllEvents] = useState([]);
     const dispatch = useDispatch();
@@ -20,12 +22,12 @@ const Events = () => {
         <main>
 
         <h1>All</h1>
-        <div>
+        <div className="events">
         {allEvents.length && allEvents.map((event) => (
             <Link key={`${event?.id}`}
             to={`/events/${event?.id}`}>
-            <div>
-            <div>
+            <div className="event_design">
+            <div className="images">
                 <img
                     height={250}
                     alt={event?.name}
@@ -36,7 +38,7 @@ const Events = () => {
                     }
                   />
                   </div>
-                <div>{event?.name}</div>
+                <div className="event_name">{event?.name}</div>
                 </div>
             </Link>
         ))}
