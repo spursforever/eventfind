@@ -4,7 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Events from "./components/Events";
+import AllEvents from "./components/Homepage";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,9 +21,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/">
-            <Events />
+          <Route exact path='/'>
+          <AllEvents />
           </Route>
+         
         </Switch>
       )}
     </>
