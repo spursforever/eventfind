@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllEvents from "./components/Homepage";
+import SingleEvent from "./components/SingleEvent";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +25,9 @@ function App() {
           <Route exact path='/'>
           <AllEvents />
           </Route>
-         
+          <Route exact path='/events/:id'>
+         <SingleEvent />
+         </Route>
         </Switch>
       )}
     </>
