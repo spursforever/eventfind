@@ -43,6 +43,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 router.post('/', eventValidation, asyncHandler(async (req,res) => {
   const newEvent = await Event.create(req.body);
 
-  return res.redirect(`${req.baseUrl}/${newEvent.id}/detail`);
+  return res.redirect(`${req.baseUrl}/${newEvent.id}`);
 }))
+
 module.exports = router

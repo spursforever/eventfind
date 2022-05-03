@@ -47,10 +47,10 @@ export const displaySingleEvent = (id) => async dispatch => {
 }
 
 export const createSingleEvent = (data) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/event`, {
+    const backendResponse = await csrfFetch(`/api/events`, {
         method: 'POST',
-        headers: {'Content-Type' : 'application/json'},
-    body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
     })
     if (backendResponse.ok) {
         const event = await backendResponse.json();
@@ -60,25 +60,26 @@ export const createSingleEvent = (data) => async dispatch => {
 }
 
 // my biggest fear: the reducer...
- const eventsReducer = (state= {}, action) => {
-     let updatedState;
-     switch (action.type) {
-         case ALL_EVENTS:
-            updatedState={...state};
+const eventsReducer = (state = {}, action) => {
+    let updatedState;
+    switch (action.type) {
+        case ALL_EVENTS:
+            updatedState = { ...state };
             action.events.forEach((event) => {
                 updatedState[event.id] = event
             })
             return updatedState;
         case SINGLE_EVENT:
-            updatedState= {...state};
+            updatedState = { ...state };
             updatedState[action.event.id] = action.event
-            return updatedState
+            return updatedState;
         case CREATE_EVENT:
-            updatedState={...state, [action.event.id]: action.event};    
-            return updatedState
-            default:
-                return state;
-     }
- }
+            updatedState = { ...state };
+            updatedState[action.event.id] = action.event;
+            return updatedState;
+        default:
+            return state;
+    }
+}
 
- export default eventsReducer
+export default eventsReducer

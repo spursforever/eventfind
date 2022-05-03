@@ -27,10 +27,8 @@ const CreateEvent = () => {
             validationErrors.push("Please provide event's location.")
         } setErrors(validationErrors)
     }, [name, description, date, location, imageUrl, dispatch])
-    const createdEvent = () => {
-        history.push("/");
-        
-    }
+    
+    
     const eventSubmission = (e) => {
         e.preventDefault();
         const payload = {
@@ -42,6 +40,12 @@ const CreateEvent = () => {
             imageUrl
         };
         dispatch((createSingleEvent(payload)))
+        .then((res) => {
+            if (res) history.push("/");
+          })
+          .catch(async (err) => {
+            const errors = await err.json();
+          });
     }
 return (
     <div>
@@ -95,7 +99,9 @@ return (
                 type="submit"
                 disabled={errors.length >0}
                 >Submit Event</button>
-                <button type="submit"> Cancel Event</button>
+                <button 
+                type="submit"
+                onClick={()=> history.push('/')}> Cancel Event</button>
         </form>
         </div>
 )
