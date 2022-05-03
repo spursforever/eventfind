@@ -41,10 +41,13 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 // Create a new event
 router.post('/', eventValidation, asyncHandler(async(req,res) => {
-  const {id} = req.user;
-  const {name, description, imageUrl, date, location} = req.body
+  // const {id} = req.user;
+  console.log("------------------", req.user)
+  console.log("---------------", req.body)
+  // const id = 1
+  const {name, description, imageUrl, date, location, userId} = req.body
   const event = await Event.create({
-    userId: id,
+    userId,
     name,
     description,
     imageUrl,
@@ -53,5 +56,6 @@ router.post('/', eventValidation, asyncHandler(async(req,res) => {
   });
   res.json(event)
 }))
+
 
 module.exports = router
