@@ -17,7 +17,7 @@ const eventValidation = [
   check('imageUrl')
     .exists({ checkFalsy: true })
     .withMessage('Please provide an image URL of the event.'),
-  check('eventDate')
+  check('date')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a date of the event.'),
   check('location')
@@ -40,16 +40,18 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 // Create a new event
-router.post('/new-event', asyncHandler(async (req,res) => {
-  const { userId, name, description, imageUrl, date, location} = req.body
-  const newEvent = await Event.create({
-    userId: userId,
+router.post('/', eventValidation, asyncHandler(async(req,res) => {
+  const {id} = req.user;
+  const {name, description, imageUrl, date, location} = req.body
+  const event = await Event.create({
+    userId: id,
     name,
     description,
     imageUrl,
     date,
     location
   });
-  return res.json(newEvent)
+  res.json(event)
 }))
+
 module.exports = router

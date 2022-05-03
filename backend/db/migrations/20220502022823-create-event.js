@@ -11,10 +11,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-      },
-      categoryId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+        references: { model: "Users" },
       },
       name: {
         type: Sequelize.STRING(60),
@@ -24,7 +21,7 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      imageUrl: { 
+      imageUrl: {
         type: Sequelize.STRING(400),
         allowNull: false,
       },

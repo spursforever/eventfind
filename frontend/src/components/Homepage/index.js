@@ -22,6 +22,7 @@ const AllEvents = () => {
     return (
         <main>
 
+        
         <h1>All</h1>
         <div className="events">
         {allEvents.length && allEvents.map((event) => (
