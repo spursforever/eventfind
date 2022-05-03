@@ -23,7 +23,7 @@ const AllEvents = () => {
         <main>
 
         
-        <h1>All</h1>
+        <h1>All Popular Events</h1>
         <div className="events">
         {allEvents.length && allEvents.map((event) => (
             <Link key={`${event?.id}`}

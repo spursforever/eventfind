@@ -10,7 +10,17 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
+      <>
+      <div>
+        <ul>
+          <li>
+      <NavLink to="/create-event">Create Event</NavLink>
+
+          </li>
+        </ul>
+      </div>
       <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
