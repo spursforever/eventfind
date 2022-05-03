@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllEvents from "./components/Homepage";
 import SingleEvent from "./components/SingleEvent";
+import CreateEvent from "./components/CreateEvent";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path='/events/:id'>
          <SingleEvent />
+         </Route>
+         <Route path="/create-event-form">
+          <CreateEvent />
          </Route>
         </Switch>
       )}

@@ -46,7 +46,7 @@ export const displaySingleEvent = (id) => async dispatch => {
 
 }
 
-export const createSingleEvent = (data) => {
+export const createSingleEvent = (data) => async dispatch => {
     const backendResponse = await csrfFetch(`/api/event`, {
         method: 'POST',
         headers: {'Content-Type' : 'application/json'},
@@ -72,6 +72,9 @@ export const createSingleEvent = (data) => {
         case SINGLE_EVENT:
             updatedState= {...state};
             updatedState[action.event.id] = action.event
+            return updatedState
+        case CREATE_EVENT:
+            updatedState={...state, [action.event.id]: action.event};    
             return updatedState
             default:
                 return state;

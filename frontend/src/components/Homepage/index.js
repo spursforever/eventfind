@@ -22,6 +22,7 @@ const AllEvents = () => {
     return (
         <main>
 
+        <button>Create Event</button>
         <h1>All</h1>
         <div className="events">
         {allEvents.length && allEvents.map((event) => (
