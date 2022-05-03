@@ -40,10 +40,18 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 // Create a new event
-router.post('/', eventValidation, asyncHandler(async (req,res) => {
-  const newEvent = await Event.create(req.body);
-
-  return res.redirect(`${req.baseUrl}/${newEvent.id}`);
+router.post('/', eventValidation, asyncHandler(async(req,res) => {
+  const {id} = req.user;
+  const {name, description, imageUrl, date, location} = req.body
+  const event = await Event.create({
+    userId: id,
+    name,
+    description,
+    imageUrl,
+    date,
+    location
+  });
+  res.json(event)
 }))
 
 module.exports = router
