@@ -1,7 +1,8 @@
 import { csrfFetch } from "./csrf"
 
-const ALL_EVENTS = 'events/allEvents'
-const SINGLE_EVENT = 'events/singleEvent'
+const ALL_EVENTS = 'events/ALL_EVENTS'
+const SINGLE_EVENT = 'events/SINGLE_EVENT'
+const CREATE_EVENT = 'events/CREATE_EVENT'
 
 // action creators
 const allEvents = (events) => {
@@ -14,6 +15,13 @@ const allEvents = (events) => {
 const singleEvent = (event) => {
     return {
         type: SINGLE_EVENT,
+        event
+    }
+}
+
+const createEvent = (event) => {
+    return {
+        type: CREATE_EVENT,
         event
     }
 }
@@ -36,6 +44,19 @@ export const displaySingleEvent = (id) => async dispatch => {
         return event
     }
 
+}
+
+export const createSingleEvent = (data) => {
+    const backendResponse = await csrfFetch(`/api/event`, {
+        method: 'POST',
+        headers: {'Content-Type' : 'application/json'},
+    body: JSON.stringify(data),
+    })
+    if (backendResponse.ok) {
+        const event = await backendResponse.json();
+        dispatch(createEvent(event));
+        return event;
+    }
 }
 
 // my biggest fear: the reducer...
