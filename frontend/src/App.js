@@ -29,7 +29,7 @@ function App() {
           <Route exact path='/events/:id'>
          <SingleEvent />
          </Route>
-         <Route path="/create-event-form">
+         <Route path="/create-event">
           <CreateEvent />
          </Route>
         </Switch>
