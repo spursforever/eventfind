@@ -8,6 +8,8 @@ import AllEvents from "./components/Homepage";
 import SingleEvent from "./components/SingleEvent";
 import CreateEvent from "./components/CreateEvent";
 import LoginForm from "./components/LoginFormModal/LoginForm";
+
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,6 +37,7 @@ function App() {
          <Route path="/create-event">
           <CreateEvent />
          </Route>
+         
         </Switch>
       )}
     </>

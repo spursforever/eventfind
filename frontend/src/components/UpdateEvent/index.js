@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { createSingleEvent } from "../../store/event";
+import { useHistory, useParams } from "react-router-dom";
+import { updateSingleEvent } from "../../store/event";
 import {useSelector, useDispatch} from "react-redux"
 
-const CreateEvent = () => {
+
+const UpdateEvent = ({ onClose }) => {
     const history = useHistory();
-    const user = useSelector((state) => state.session.user);
+    const {id} = useParams();
+    const event = useSelector((state) => state.event[id]);
+   
+    
     const dispatch = useDispatch();
-    const [name, setName] = useState("");
-    const [imageUrl, setImageUrl] = useState("")
-    const [description, setDescription] = useState("");
-    const [date, setDate] = useState("");
-    const [location, setLocation] = useState("");
+    const [name, setName] = useState(event?.name || "");
+    const [imageUrl, setImageUrl] = useState(event?.imageUrl || "")
+    const [description, setDescription] = useState(event?.description || "");
+    const [date, setDate] = useState(event?.date || "");
+    const [location, setLocation] = useState(event?.location || "");
     const [errors, setErrors] = useState([]);
+
+
     useEffect(() => {
         const validationErrors = [];
         if (!name) {
@@ -27,71 +33,88 @@ const CreateEvent = () => {
         } if (!location) {
             validationErrors.push("Please provide event's location.")
         } setErrors(validationErrors)
-    }, [name, description, date, location, imageUrl, dispatch])
+    }, [name, description, date, location, imageUrl, dispatch]);
+
+    useEffect(() => {
+        if (event) {
+            setName(event.name);
+            setImageUrl(event.imageUrl);
+            setDescription(event.description);
+            setDate(event.date)
+            setLocation(event.location)
+        }
+    }, [event])
     
-    
-    const eventSubmission = (e) => {
+    const editEventSubmission = async (e) => {
         e.preventDefault();
         const payload = {
-            userId: user.id,
+            ...event,
             name,
             description,
             date,
             location,
             imageUrl
         };
-        dispatch((createSingleEvent(payload)))
-        .then((res) => {
-            if (res) history.push("/");
-          })
-          .catch(async (err) => {
-            const errors = await err.json();
-          });
+
+        const updatedEvent = await dispatch(updateSingleEvent(payload));
+        if (updatedEvent) {
+            history.push(`/events/${event.id}`)
+            onClose(false)
+        }
     }
 return (
     <div>
-        <form onSubmit={eventSubmission}>
-            <h1>Create your desired Event!</h1>
+        <form onSubmit={editEventSubmission}>
+            <h1>Event Details</h1>
             <ul>{errors.map((error) => (
-                <li>
+                <li key={error}>
                 {error}
                 </li>))}
                 </ul>
                 <div>
-                    <label>Event Name: </label>
+                    <label> Event Name: </label>
                     <input
-                    id="form-label-title"
+                    id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className=""
+                    className="edit_form"
                     />
                 </div>
                 <div className="">
           <label> Description: </label>
           <textarea
-            id="form-label-Date"
+            id="description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className=""
+            className="edit_form"
             />
             </div>
           <div>
-          <label>ImageUrl: </label>
+          <label> ImageUrl: </label>
           <input
+            id='imageUrl'
+            className="edit_form"
+            type="text"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)} />
                   </div>
           <div>
 
-          <label>Date: </label>
+          <label> Date: </label>
           <input
+          id="date"
           value={date}
-          onChange={(e) => setDate(e.target.value)}></input>
+          className="edit_form"
+          onChange={(e) => setDate(e.target.value)}>
+
+          </input>
           </div>
           <div>
-              <label>Location: </label>
+              <label> Location: </label>
               <input 
               value={location}
+              id="location"
+              className="edit_form"
               onChange={(e) => setLocation(e.target.value)}
               />
           </div>
@@ -102,7 +125,8 @@ return (
                 >Submit Event</button>
                 <button 
                 type="submit"
-                onClick={()=> history.push('/')}> Cancel Event</button>
+                onClick={onClose}> Cancel Event</button>
+            
         </form>
         </div>
 )
@@ -110,4 +134,4 @@ return (
 
 
 
-export default CreateEvent;
+export default UpdateEvent;
