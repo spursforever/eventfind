@@ -68,7 +68,7 @@ export const createSingleEvent = (data) => async dispatch => {
 }
 
 export const updateSingleEvent = (data) => async (dispatch) => {
-    const backendResponse = await csrfFetch(`/api/events/${data.id}`, {
+    const backendResponse = await csrfFetch(`/api/events/${data.id}/update`, {
         method: "PUT",
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(data)

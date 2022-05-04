@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { displaySingleEvent } from "../../store/event";
 import "./SingleEvent.css"
+import UpdateModal from "../UpdateEvent/UpdateEvent";
 
 const SingleEvent = () => {
     const { id } = useParams();
@@ -11,7 +12,7 @@ const SingleEvent = () => {
     const eventId = +id;
 
     const event = useSelector((state) => state.event[id]);
-    const userId = useSelector((state) => state.session.user?.id)
+    const user_Id = useSelector((state) => state.session.user?.id)
 
     useEffect(() => {
         dispatch(displaySingleEvent(id));
@@ -41,10 +42,12 @@ const SingleEvent = () => {
                         <div>Event Date: {event.date}</div>
                         <div>Event Location: {event.location}</div>
                     </h3>
-                    <div>
-                        <button>Edit Event</button>
-                        <button>Delete Event</button>
-                    </div>
+                </div>
+                <div>
+                    {user_Id === event.userId && <UpdateModal />}
+                    {user_Id === event.userId && (
+                        <button>Delete</button>
+                    )}
                 </div>
             </div>
         </div>

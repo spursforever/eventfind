@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { createSingleEvent } from "../../store/event";
+import { useHistory, useParams } from "react-router-dom";
+import { updateSingleEvent } from "../../store/event";
 import {useSelector, useDispatch} from "react-redux"
-import { displaySingleEvent, updateSingleEvent } from "../../store/event";
+import UpdateModal from "./UpdateEvent";
 
-const UpdateEvent = () => {
+const UpdateEvent = ({onClose}) => {
     const history = useHistory();
-    const user = useSelector((state) => state.session.user);
+    const {id} = useParams();
+    const event = useSelector((state) => state.event[id]);
+    const user_Id = useSelector((state) => state.session.user?.id);
+    
     const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [imageUrl, setImageUrl] = useState("")
@@ -14,6 +17,8 @@ const UpdateEvent = () => {
     const [date, setDate] = useState("");
     const [location, setLocation] = useState("");
     const [errors, setErrors] = useState([]);
+
+
     useEffect(() => {
         const validationErrors = [];
         if (!name) {
@@ -29,32 +34,38 @@ const UpdateEvent = () => {
             validationErrors.push("Please provide event's location.")
         } setErrors(validationErrors)
     }, [name, description, date, location, imageUrl, dispatch])
+    useEffect(() => {
+        if (event) {
+            setName(event.name);
+            setImageUrl(event.imageUrl);
+            setDescription(event.description);
+            setDate(event.date)
+            setLocation(event.location)
+        }
+    }, [event])
     
-    
-    const eventSubmission = (e) => {
+    const eventSubmission = async (e) => {
         e.preventDefault();
         const payload = {
-            userId: user.id,
+            ...event,
             name,
             description,
             date,
             location,
             imageUrl
         };
-        dispatch((createSingleEvent(payload)))
-        .then((res) => {
-            if (res) history.push("/");
-          })
-          .catch(async (err) => {
-            const errors = await err.json();
-          });
+        const updatedEvent = await dispatch(updateSingleEvent(payload));
+        if (updatedEvent) {
+            history.push(`/events/${event.id}`)
+            onClose(false)
+        }
     }
 return (
     <div>
         <form onSubmit={eventSubmission}>
-            <h1>Create your desired Event!</h1>
+            <h1>Event Details</h1>
             <ul>{errors.map((error) => (
-                <li>
+                <li key={error}>
                 {error}
                 </li>))}
                 </ul>
@@ -104,6 +115,10 @@ return (
                 <button 
                 type="submit"
                 onClick={()=> history.push('/')}> Cancel Event</button>
+            <div>
+                {user_Id === event.userId && <UpdateModal />}
+                {user_Id === event.userId && (<button>Delete</button>)}
+            </div>
         </form>
         </div>
 )
