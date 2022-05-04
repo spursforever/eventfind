@@ -76,4 +76,15 @@ router.put('/:id(\\d+)/update', requireAuth, eventValidation, asyncHandler(async
  }
 }))
 
+router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req,res) => {
+  const eventId = parseInt(req.params.id, 10);
+  const removeEvent = await Event.findByPk(eventId)
+  const userId = removeEvent.userId;
+  const { id } = req.user
+  console.log('*******************', req.user)
+  if (id === userId) {
+    await removeEvent.destroy();
+    return res.json("Event successfully removed!")
+  }
+}))
 module.exports = router
