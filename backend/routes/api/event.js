@@ -36,7 +36,7 @@ router.get('/', asyncHandler(async(req,res) => {
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     let eventId = parseInt(req.params.id, 10);
     let singleEvent = await Event.findByPk(eventId);
-    return res.json(eventId)
+    return res.json(singleEvent)
 }));
 
 // Create a new event
@@ -63,11 +63,12 @@ router.put('/:id(\\d+)/update', requireAuth, eventValidation, asyncHandler(async
  console.log('-------------------------', req.user)
  const eventId = parseInt(req.params.id, 10);
  const updatedEvent = await Event.findByPk(eventId)
- const userId =eventToUpdate.userId;
+ const userId = updatedEvent.userId;
  const {name, description, imageUrl, date, location} = req.body
  if (id === userId) {
    if (validateErrors.isEmpty()) {
-     const event = await updatedEvent({name, description, imageUrl, date, location});
+     const event = await updatedEvent.update({name, description, imageUrl, date, location});
+     await updatedEvent.save()
      return res.json(event)
    } else {
      res.json(validateErrors)

@@ -27,7 +27,7 @@ const createEvent = (event) => {
     }
 }
 
-const updateEvent = (event) => {
+const update = (event) => {
     return {
         type: UPDATE_EVENT,
         event
@@ -75,7 +75,7 @@ export const updateSingleEvent = (data) => async (dispatch) => {
     });
     if (backendResponse.ok) {
         const oneEvent = await backendResponse.json();
-        dispatch(updateEvent(oneEvent));
+        dispatch(update(oneEvent));
         return oneEvent
     }
 }
@@ -101,6 +101,7 @@ const eventsReducer = (state = {}, action) => {
         case UPDATE_EVENT:
             updatedState = { ...state };
             updatedState[action.event.id] = action.event;
+            return updatedState
         default:
             return state;
     }
