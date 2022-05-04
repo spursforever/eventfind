@@ -85,6 +85,6 @@ router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req,res) => 
   if (id === userId) {
     await removeEvent.destroy();
     return res.json("Event successfully removed!")
-  }
+  } else return res.status(401).json({ errors: ['Unauthorized.'] });
 }))
 module.exports = router

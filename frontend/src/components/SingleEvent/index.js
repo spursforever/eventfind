@@ -1,13 +1,13 @@
 import { useHistory, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { displaySingleEvent } from "../../store/event";
+import { displaySingleEvent, removeSingleEvent } from "../../store/event";
 import "./SingleEvent.css"
 import UpdateModal from "../UpdateEvent/UpdateEvent";
 
 const SingleEvent = () => {
     const { id } = useParams();
-    // const history = useHistory();
+     const history = useHistory();
     const dispatch = useDispatch();
     const event = useSelector((state) => state.event[id]);
     const user_Id = useSelector((state) => state.session.user?.id)
@@ -18,7 +18,11 @@ const SingleEvent = () => {
     if (!event) {
         return null;
     }
-
+    const deleteEvent = (e) => {
+        e.preventDefault();
+        dispatch(removeSingleEvent(id))   
+        history.push("/")
+    }
     return (
         <div>
             <img
@@ -46,7 +50,7 @@ const SingleEvent = () => {
                 <div>
                     {user_Id === event.userId && <UpdateModal />}
                     {user_Id === event.userId && (
-                        <button>Delete</button>
+                        <button onClick={deleteEvent}>Delete</button>
                     )}
                 </div>
             </div>

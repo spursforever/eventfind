@@ -92,7 +92,7 @@ export const removeSingleEvent = (data) => async (dispatch) => {
         method: "DELETE",
          })
     if (backendResponse.ok) {
-        await dispatch(removeSingleEvent(data))
+        await dispatch(remove(data))
         const removingEvent = await backendResponse.json()
         return removingEvent
     }
@@ -122,7 +122,7 @@ const eventsReducer = (state = {}, action) => {
             return updatedState
         case REMOVE_EVENT:
                 updatedState = {...state};
-                delete updatedState[action.id];
+                delete updatedState[action.event];
                 return updatedState
         default:
             return state;
