@@ -4,7 +4,7 @@ const ALL_EVENTS = 'events/ALL_EVENTS'
 const SINGLE_EVENT = 'events/SINGLE_EVENT'
 const CREATE_EVENT = 'events/CREATE_EVENT'
 const UPDATE_EVENT = 'events/UPDATE_EVENT'
-
+const REMOVE_EVENT = 'events/REMOVE_EVENT'
 // action creators
 const allEvents = (events) => {
     return {
@@ -30,6 +30,13 @@ const createEvent = (event) => {
 const update = (event) => {
     return {
         type: UPDATE_EVENT,
+        event
+    }
+}
+
+const remove = (event) => {
+    return {
+        type: REMOVE_EVENT,
         event
     }
 }
@@ -80,6 +87,17 @@ export const updateSingleEvent = (data) => async (dispatch) => {
     }
 }
 
+export const removeSingleEvent = (data) => async (dispatch) => {
+    const backendResponse = await csrfFetch(`/api/events/${data}/remove`, {
+        method: "DELETE",
+         })
+    if (backendResponse.ok) {
+        await dispatch(remove(data))
+        const removingEvent = await backendResponse.json()
+        return removingEvent
+    }
+}
+
 // my biggest fear: the reducer...
 const eventsReducer = (state = {}, action) => {
     let updatedState;
@@ -102,6 +120,10 @@ const eventsReducer = (state = {}, action) => {
             updatedState = { ...state };
             updatedState[action.event.id] = action.event;
             return updatedState
+        case REMOVE_EVENT:
+                updatedState = {...state};
+                delete updatedState[action.event];
+                return updatedState
         default:
             return state;
     }
