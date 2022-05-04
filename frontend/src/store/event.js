@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf"
 const ALL_EVENTS = 'events/ALL_EVENTS'
 const SINGLE_EVENT = 'events/SINGLE_EVENT'
 const CREATE_EVENT = 'events/CREATE_EVENT'
+const UPDATE_EVENT = 'events/UPDATE_EVENT'
 
 // action creators
 const allEvents = (events) => {
@@ -22,6 +23,13 @@ const singleEvent = (event) => {
 const createEvent = (event) => {
     return {
         type: CREATE_EVENT,
+        event
+    }
+}
+
+const updateEvent = (event) => {
+    return {
+        type: UPDATE_EVENT,
         event
     }
 }
@@ -59,6 +67,19 @@ export const createSingleEvent = (data) => async dispatch => {
     }
 }
 
+export const updateSingleEvent = (data) => async (dispatch) => {
+    const backendResponse = await csrfFetch(`/api/events/${data.id}`, {
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    });
+    if (backendResponse.ok) {
+        const oneEvent = await backendResponse.json();
+        dispatch(updateEvent(oneEvent));
+        return oneEvent
+    }
+}
+
 // my biggest fear: the reducer...
 const eventsReducer = (state = {}, action) => {
     let updatedState;
@@ -77,6 +98,9 @@ const eventsReducer = (state = {}, action) => {
             updatedState = { ...state };
             updatedState[action.event.id] = action.event;
             return updatedState;
+        case UPDATE_EVENT:
+            updatedState = { ...state };
+            updatedState[action.event.id] = action.event;
         default:
             return state;
     }

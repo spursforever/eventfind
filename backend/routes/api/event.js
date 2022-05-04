@@ -57,5 +57,11 @@ router.post('/', eventValidation, asyncHandler(async(req,res) => {
   res.json(event)
 }))
 
+router.put('/:id', eventValidation, asyncHandler(async (req,res) => {
+  const id = req.params.id;
+  const event = await Event.findByPk(id);
+  await event.update(req.body);
+  res.redirect(`/api/event/${id}`)
+}))
 
 module.exports = router

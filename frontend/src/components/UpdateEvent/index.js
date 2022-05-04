@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createSingleEvent } from "../../store/event";
 import {useSelector, useDispatch} from "react-redux"
+import { displaySingleEvent, updateSingleEvent } from "../../store/event";
 
-const CreateEvent = () => {
+const UpdateEvent = () => {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
@@ -110,4 +111,4 @@ return (
 
 
 
-export default CreateEvent;
+export default UpdateEvent;
