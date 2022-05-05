@@ -11,8 +11,10 @@ const MyEvents = () => {
 
     useEffect(() => {
         dispatch(getAllTickets(user.id))
-    }, [dispatch])
+    }, [dispatch]);
+
     let detail;
+    
     if (!tickets) {
         detail = (
             <>

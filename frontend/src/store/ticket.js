@@ -29,8 +29,8 @@ export const getAllTickets = (id) => async dispatch => {
     }
 }
 
-export const addOneTicket = (event) => async dispatch => {
-    const backendResponse = await csrfFetch(`api/tickets/event/${event.eventId}`, {
+export const addOneTicket = (data) => async dispatch => {
+    const backendResponse = await csrfFetch(`/api/tickets/events/${data.id}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data)
@@ -38,6 +38,7 @@ export const addOneTicket = (event) => async dispatch => {
     if (backendResponse.ok) {
         const registeredEvent = await backendResponse.json();
         dispatch(addTicket(registeredEvent))
+        return registeredEvent
     }
 }
 
@@ -48,8 +49,7 @@ const ticketReducer = (state = {}, action) => {
             return {...state, 
             list :action.tickets}
         case ADD_TICKET:
-            const updatedState = {...state};
-            updatedState[action.event.id] = action.event;
+            const updatedState = {...state, [action.ticket.id]: action.ticket}
             return updatedState
     default:
         return state;
