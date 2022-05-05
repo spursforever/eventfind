@@ -8,7 +8,7 @@ import AllEvents from "./components/Homepage";
 import SingleEvent from "./components/SingleEvent";
 import CreateEvent from "./components/CreateEvent";
 import LoginForm from "./components/LoginFormModal/LoginForm";
-
+import MyEvents from "./components/MyEvents";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +36,9 @@ function App() {
          </Route>
          <Route path="/create-event">
           <CreateEvent />
+         </Route>
+         <Route path="/tickets/users/:id">
+           <MyEvents />
          </Route>
          
         </Switch>

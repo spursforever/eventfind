@@ -9,8 +9,10 @@ router.get('/users/:id', asyncHandler( async(req, res) => {
         {
             where: {userId: id},
             include: {model: Event},
-            order: [["id", 'DESC']]
+            // order: [["id", 'DESC']]
         }
     );
     return res.json(registeredEvents)
 }))
+
+module.exports = router
