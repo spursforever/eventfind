@@ -1,6 +1,5 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const Sequelize = require('sequelize');
 const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
