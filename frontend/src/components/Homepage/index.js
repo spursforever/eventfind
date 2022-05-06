@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import {useDispatch, useSelector} from "react-redux"
 import { displayAllEvents } from "../../store/event"
 import './Homepage.css'
-
+import Footer from "../Footer"
 const AllEvents = () => {
     const [allEvents, setAllEvents] = useState([]);
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const AllEvents = () => {
     }, [eventDisplay])
     
     return (
-        <main>
+        <>
 
         
         <h1>All Popular Events</h1>
@@ -43,7 +43,8 @@ const AllEvents = () => {
             </Link>
         ))}
         </div>
-        </main>
+        <Footer />
+        </>
     )
 }
 

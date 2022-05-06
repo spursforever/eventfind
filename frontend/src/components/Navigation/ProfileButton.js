@@ -31,6 +31,7 @@ function ProfileButton({ user }) {
   return (
     <>
     <div>
+       {/* <i className="fas fa-user-circle avatar" onClick={openMenu}></i> */}
       <span onClick={openMenu}>Hi {user.username}
        
       </span>

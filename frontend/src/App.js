@@ -22,22 +22,22 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/signup">
+          <Route path="/signup" exact={true}>
             <SignupFormPage />
           </Route>
-          <Route path="/login">
+          <Route path="/login" exact={true}>
             <LoginForm />
           </Route>
-          <Route exact path='/'>
+          <Route  path='/' exact={true}>
           <AllEvents />
           </Route>
-          <Route exact path='/events/:id'>
+          <Route  path='/events/:id' exact={true}>
          <SingleEvent />
          </Route>
-         <Route path="/create-event">
+         <Route path="/create-event" exact={true}>
           <CreateEvent />
          </Route>
-         <Route path="/tickets/users/:id">
+         <Route path="/tickets/users/:id" exact={true}>
            <MyEvents />
          </Route>
          

@@ -1,0 +1,25 @@
+.footer_container {
+    position: absolute;
+    margin-left:-10px;
+    margin-top: 400px;
+    width: 120%;
+    background-color: orangered;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+    padding: 22px;
+    color: wheat;
+    text-align: left;
+    display: flex
+}
+.footer_container div {
+    margin-left: 1300px
+}
+
+.footer_container a {
+    color: black;
+  font-size: 28px;
+  margin-right: 20px;
+}
