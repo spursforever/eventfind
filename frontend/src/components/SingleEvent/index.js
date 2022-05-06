@@ -8,11 +8,12 @@ import { addOneTicket } from "../../store/ticket";
 
 const SingleEvent = () => {
     const { id } = useParams();
+    const eventId = +id;
      const history = useHistory();
     const dispatch = useDispatch();
     const event = useSelector((state) => state.event[id]);
-    const user_Id = useSelector((state) => state.session.user);
-    // const userEvent = user_Id.id === event?.userId
+    const sessionUser = useSelector((state) => state.session.user?.id);
+//    const userEvent = user_Id?.id === event?.sessionUser
     useEffect(() => {
         dispatch(displaySingleEvent(id));
     }, [dispatch, id])
@@ -28,10 +29,10 @@ const SingleEvent = () => {
         e.preventDefault();
         const payload = {
             eventId: event.id,
-            userId: user_Id.id
+            userId: sessionUser
         }
         dispatch(addOneTicket(payload))
-        history.push(`/tickets/users/${user_Id}`)
+        history.push(`/tickets/users/${sessionUser}`)
     }
     return (
         <div>
@@ -41,8 +42,9 @@ const SingleEvent = () => {
                 className="images"
                 alt={event?.name}
                 src={event?.imageUrl} />
-            <div>
+            
                 <img />
+                <div>
                 <div>
                     <h1>
                         <div>Event Name: {event?.name}</div>
@@ -58,13 +60,19 @@ const SingleEvent = () => {
                     </h3>
                 </div>
                 <div>
-                    {user_Id === event.userId && <UpdateModal />}
-                    {user_Id === event.userId && (
+                    {sessionUser === event.userId && <UpdateModal />}
+                    {sessionUser === event.userId && (
                         <button onClick={deleteEvent}>Delete</button>
                     )}
-                     <button onClick={registerEvent}>Register Event</button>
                     
-                </div> 
+                        
+                    
+                    
+                </div>
+                <div>{sessionUser  && (
+                    <button onClick={registerEvent}>Register Event</button>)}
+                    </div> 
+                
                 
                 
             </div>

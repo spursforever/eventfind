@@ -44,13 +44,15 @@ export const addOneTicket = (data) => async dispatch => {
 
 //reducer
 const ticketReducer = (state = {}, action) => {
+    let updatedState;
         switch (action.type) {
         case ALL_TICKETS:
             return {...state, 
             list :action.tickets}
         case ADD_TICKET:
-            const updatedState = {...state, [action.ticket.id]: action.ticket}
-            return updatedState
+            updatedState = { ...state };
+            updatedState[action.event.id] = action.event;
+            return updatedState;
     default:
         return state;
 }

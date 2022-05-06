@@ -10,7 +10,7 @@ const MyEvents = () => {
     const tickets = useSelector(state => state.ticket.list)
 
     useEffect(() => {
-        dispatch(getAllTickets(user.id))
+        dispatch(getAllTickets(user?.id))
     }, [dispatch]);
 
     let detail;
