@@ -29,7 +29,7 @@ const removeTicket = ticket => {
 
 // thunk action
 export const getAllTickets = (userId) => async dispatch => {
-    const backendResponse = await fetch(`/api/tickets/users/${userId}`);
+    const backendResponse = await csrfFetch(`/api/tickets/users/${userId}`);
 
     if (backendResponse.ok) {
         const tickets = await backendResponse.json()
@@ -47,7 +47,7 @@ export const addOneTicket = (data) => async dispatch => {
     if (backendResponse.ok) {
         const registeredEvent = await backendResponse.json();
         dispatch(addTicket(registeredEvent));
-        
+        return registeredEvent
     }
 }
 
@@ -56,9 +56,9 @@ export const deleteTicket = (id) => async dispatch => {
         method: "DELETE",
     });
     if (backendResponse.ok) {
+         dispatch(removeTicket(id))
         const ticket = await backendResponse.json();
-        dispatch(removeTicket(id))
-        
+         return ticket
     }
 }
 
@@ -73,14 +73,24 @@ const ticketReducer = (state = initialState, action) => {
                 list: action.tickets,
             }
         case ADD_TICKET:
-            const newState = {...state, [action.ticket.id]: action.ticket}
-            return newState;
+            if(!state[action.ticket.id]) {
+                const newState = {
+                 ...state,
+                 [action.ticket.id]: action.ticket
+                }
+                return newState
+               }
+               return {
+                ...state,
+                [action.ticket.id]: {
+                 ...state[action.ticket.id],
+                 ...action.ticket
+                }
+               }
         case REMOVE_TICKET:
-           const updatedState = { ...state };
-            const filteredTicket = updatedState.list.filter(ticket => (
-                ticket.id !== action.id))
-            updatedState.list = filteredTicket
-            return updatedState;
+            const updatedState = {...state};
+                delete updatedState[action.ticket];
+                return updatedState
         default:
             return state;
     }

@@ -2,11 +2,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllTickets, deleteTicket } from "../../store/ticket";
 import { useHistory } from "react-router-dom";
-
+import "./MyEvents.css"
 
 const MyEvents = () => {
-   
-   const history = useHistory();
+
+    const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user);
     const tickets = useSelector(state => state.ticket.list)
@@ -22,47 +22,52 @@ const MyEvents = () => {
         history.push(`/tickets/users/${user.id}`)
     }
     let detail;
-    
+
     if (!tickets) {
         detail = (
             <>
-            <h1>My Events</h1>
-            <div>
-                You have no events now because you haven't registered any events.
-            </div>
+                <h1>My Events</h1>
+                <div>
+                    You have no events now because you haven't registered any events.
+                </div>
             </>
         )
     }
-        else {
-            detail = (
-                <div>
+    else {
+        detail = (
+            <div className="my_events">                
                 <h1>My Events</h1>
+                <div className="my_events_container">
                 {tickets.map((registration) => {
                     return (
-                        
-                        <div key={registration.id}>
+                        <div className="ticketlist" key={registration.id}>
+                            <div className="event_names">
+                                <h3>{registration.Event.name}</h3>
+                            </div>
+                            <div className="event_image">
                             <img
-                            alt={registration.name}
-                            src={`${registration.Event.imageUrl}`}
-                            ></img>
-                            <div>#{registration.id}</div>
-                        
-                        <div>{registration.Event.name}</div>
-                        <div>{new Date(registration.Event.date).toDateString()}</div>
-                       <div> <button onClick={(e) => cancelTicket(e, registration.id)}>Cancel Event</button> </div>
-                       </div>
-                      
-                
+                                height={180}
+                                width={400}
+                                alt={registration.name}
+                                src={`${registration.Event.imageUrl}`}
+                            >
+                            </img>
+                            </div>
+                            
+                            <div className="cancel_registration_button">
+                                <button className="cancel_registration" onClick={(e) => cancelTicket(e, registration.id)}>Cancel Event</button> </div>
+                        </div>
                     )
                 })}
-            </div> 
-            )
-        }
-    
+            </div>
+            </div>
+        )
+    }
+
     return (
         <>
-        
-        {detail}
+
+            {detail}
         </>
     )
 }

@@ -1,0 +1,56 @@
+.my_events {
+    display: flex;
+  flex-direction: column ;
+  justify-content: center;
+  align-items: center;
+}
+
+.event_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my_events_container {
+    display: flex;
+  flex-direction: column;
+  width: 1100px;
+  justify-content: center;
+}
+.event_names {
+    width: 440px;
+    /* height:auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: orangered
+}
+
+.ticketlist {
+    display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 220px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+.cancel_registration_button {
+        display: flex;
+    justify-content: right;
+    align-items: right;   
+    width: 200px;
+     height: 60px; 
+}
+
+.cancel_registration {
+    cursor: pointer;
+    height: 80px;
+    /* border-radius: 20px; */
+    background-color:orangered;
+    color: white;
+    border: none;
+   
+    font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
+    font-weight: bolder;
+}
