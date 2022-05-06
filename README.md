@@ -2,8 +2,10 @@
 Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.eventbrite.com/) where users can view and create their own desire events.
 
 ## Link to Livesite
+[eventfind](https://eventfind.herokuapp.com/)
 
 ## Technologies Used
+<img src="https://img.icons8.com/color/48/000000/javascript--v1.png"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" height=40/><img src="https://img.icons8.com/color/48/000000/css3.png"/><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" height=40 />
 
 ## Getting Started
 1. Clone this repistory
@@ -34,5 +36,14 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 ![drawSQL-export-2022-05-01_13_36](https://user-images.githubusercontent.com/94093737/166179917-82286b4b-ec00-44f7-8371-4b350260e8d3.png)
 
 ## Features
+1. Users
+* User can sign up, log in, and sign up of the site
+* User can also choose to log in as a demo user.
+2. Events
+* All users can look at the events and their details
+* Logged-in users can create, edit, and delete events
+3. Ticket
+* Logged-in users can register event.
+* They can also cancel the registration that they just made
 
 
