@@ -1,0 +1,123 @@
+.create_event {
+    position: relative;
+    top: 20px;
+    width: 800px;
+    margin: 5px;
+    display: column;
+    justify-content: left;
+      
+}
+
+h1 {
+    justify-content: left;
+    margin-left: 10px;
+    font-size: 32px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+
+}
+
+.error_info {
+    color: orangered;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: opacity 200ms ease-in;
+}
+
+.create_event_form {
+    font-weight: 400px;
+  font-size: 15px;
+  text-align: left;
+}
+
+.name_input {
+    color: #222222;
+    display: block;
+    outline: none;
+    font-family: inherit;
+    width: 400px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.description_input {
+    color: black;
+  display: block;
+  outline: none;
+  font-family: inherit;
+  width: 400px;
+  height: 100px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: 200;
+}
+.url_input {
+    color: black;
+    display: block;
+    outline: none;
+    font-family: inherit;
+    width: 400px;
+    height: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.date_input {
+    color: #222222;
+    display: block;
+    outline: none;
+    font-family: inherit;
+    width: 400px;
+    height: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.location_input {
+    color: #222222;
+    display: block;
+    outline: none;
+    font-family: inherit;
+    width: 400px;
+    height: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.submit_event {
+    border: none;
+    background-color: lightsalmon;
+    border-radius: 4px;
+    color: white;
+    font-size: 17px;
+    width: 125px;
+    height: 35px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.3, 1);
+    margin-left: 50px;
+}
+
+.cancel_event {
+    border: 2px solid gray;
+    background-color: red;
+    border-radius: 4px;
+    color: white;
+    font-size: 17px;
+    width: 125px;
+    height: 35px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.3, 1);
+    margin-left: 55px;
+}
+.submit_event:hover {
+    background-color: orangered;
+    cursor: pointer;
+}
+
