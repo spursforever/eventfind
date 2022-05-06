@@ -1,0 +1,39 @@
+ /* * {
+    margin: 0;
+    padding: 0
+  } */
+
+.navigation {
+    display: flex;
+    height: 80px;
+  justify-content: space-between;
+  box-shadow: 0 1px 5px gray;
+  z-index: 5;
+  font-weight: bolder;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  position: sticky;
+}
+.home {
+    display: flex;
+    padding: 5px;
+    height: fit-content;
+    height: 100%;
+}
+.navigation-menu ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    margin-top: 13px;
+    padding: 5px;
+    margin-right: 50px;
+    list-style-type: none;
+
+}
+
+
+
+.navigation-item {
+    margin: 15px;
+}

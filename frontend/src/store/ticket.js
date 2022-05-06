@@ -6,21 +6,21 @@ const ADD_TICKET = 'ticket/ADD_TICKET'
 const REMOVE_TICKET = 'ticket/REMOVE_TICKET'
 
 // action creator
-const allTickets = (tickets) => {
+const allTickets = tickets => {
     return {
         type: ALL_TICKETS,
         tickets
     }
 
 }
-const addTicket = (ticket) => {
+const addTicket = ticket => {
     return {
         type: ADD_TICKET,
         ticket
     }
 }
 
-const removeTicket = (ticket) => {
+const removeTicket = ticket => {
     return {
         type: REMOVE_TICKET,
         ticket
@@ -28,8 +28,9 @@ const removeTicket = (ticket) => {
 }
 
 // thunk action
-export const getAllTickets = (id) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/users/${id}`)
+export const getAllTickets = (userId) => async dispatch => {
+    const backendResponse = await fetch(`/api/tickets/users/${userId}`);
+
     if (backendResponse.ok) {
         const tickets = await backendResponse.json()
         dispatch(allTickets(tickets))
@@ -38,43 +39,44 @@ export const getAllTickets = (id) => async dispatch => {
 }
 
 export const addOneTicket = (data) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/events/${data.id}`, {
+    const backendResponse = await csrfFetch(`/api/tickets/events/${data.eventId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
     if (backendResponse.ok) {
         const registeredEvent = await backendResponse.json();
-        dispatch(addTicket(registeredEvent))
-        return registeredEvent
+        dispatch(addTicket(registeredEvent));
+        
     }
 }
 
-export const deleteTicket = (ticketId) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/${ticketId}`, {
+export const deleteTicket = (id) => async dispatch => {
+    const backendResponse = await csrfFetch(`/api/tickets/${id}`, {
         method: "DELETE",
     });
     if (backendResponse.ok) {
         const ticket = await backendResponse.json();
-        dispatch(removeTicket(ticketId))
+        dispatch(removeTicket(id))
+        
     }
 }
 
 //reducer
-const ticketReducer = (state = {}, action) => {
-    let updatedState;
+const initialState = {}
+const ticketReducer = (state = initialState, action) => {
+    // let updatedState;
     switch (action.type) {
         case ALL_TICKETS:
             return {
                 ...state,
-                list: action.tickets
+                list: action.tickets,
             }
         case ADD_TICKET:
-            updatedState = { ...state };
-            updatedState[action.event.id] = action.event;
-            return updatedState;
+            const newState = {...state, [action.ticket.id]: action.ticket}
+            return newState;
         case REMOVE_TICKET:
-            updatedState = { ...state };
+           const updatedState = { ...state };
             const filteredTicket = updatedState.list.filter(ticket => (
                 ticket.id !== action.id))
             updatedState.list = filteredTicket

@@ -11,10 +11,31 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-            <NavLink to="/create-event"><i></i>Create Event</NavLink>
-            <NavLink to={`/tickets/users/${sessionUser.id}`}>My Events</NavLink>
+      <div className='home'>
+        <div className='home-click'>
+           <NavLink exact to="/">Home</NavLink>
+        </div>
+     
+      </div>
+
+      <div className='navigation-menu'>
+        <ul className='navigation-list'>
+          <li className='navigation-item'>
+            <NavLink to="/create-event">Create Event</NavLink>
+             </li>
+             <li className='navigation-item'>
+              <NavLink to={`/tickets/users/${sessionUser.id}`}>My Events</NavLink>
+            </li>
+            <li className='navigation-item'>
+              <ProfileButton user={sessionUser} />
+            </li>
+            
+           
+            </ul>
+            </div>
+            
          
-      <ProfileButton user={sessionUser} />
+      
       </>
     );
   } else {
@@ -27,12 +48,11 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+    <header className='navigation'>
+     
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    </header>
+   
   );
 }
 

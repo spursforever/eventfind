@@ -1,23 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getAllTickets, deleteTicket } from "../../store/ticket";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 
 const MyEvents = () => {
+   
+   const history = useHistory();
     const dispatch = useDispatch();
-   const history= useHistory();
     const user = useSelector(state => state.session.user);
     const tickets = useSelector(state => state.ticket.list)
 
     useEffect(() => {
-        dispatch(getAllTickets(user?.id))
+        dispatch(getAllTickets(user.id))
     }, [dispatch]);
+
     const cancelTicket = (e, ticketId) => {
         e.preventDefault();
         dispatch(deleteTicket(ticketId));
         dispatch(getAllTickets(user.id));
-        history.pushState(`/tickets/users/${user.id}`)
+        history.push(`/tickets/users/${user.id}`)
     }
     let detail;
     

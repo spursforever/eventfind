@@ -16,10 +16,10 @@ router.get('/users/:id', asyncHandler( async(req, res) => {
 }))
 
 router.post('/events/:id', asyncHandler( async (req, res) => {
-    // const id = req.params.id;
+    const id = req.params.id;
     const { userId, eventId } = req.body;
     const ticket = await Ticket.create({userId, eventId});
-    res.json(ticket)
+    return res.redirect(`${req.baseUrl}/users/${userId}`)
 }));
 
 router.delete('/:id', asyncHandler(async (req, res) => {
