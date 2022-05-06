@@ -20,5 +20,14 @@ router.post('/events/:id', asyncHandler( async (req, res) => {
     const { userId, eventId } = req.body;
     const ticket = await Ticket.create({userId, eventId});
     res.json(ticket)
+}));
+
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const ticket = await Ticket.findByPk(id)
+    if (!ticket)
+    throw new Error("The ticket can't be found, so it can't be removed!")
+    await ticket.destroy();
+    return res.json(id)
 }))
 module.exports = router
