@@ -92,9 +92,10 @@ form {
 .demo {
     display: inline-block;
     text-align: center;
-    background-color: orange;
-    color: white;
+    background-color: rgb(251, 255, 0);
+    color: red;
     font-size: 15px;
+    font-weight: bold;
     border-radius: 4px;
     height: 45px;
     width: 100%;

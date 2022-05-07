@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.form-list {
+.form-lists {
     color: #a61a2e;
     font-weight: 400;
     font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans",
@@ -10,20 +10,21 @@
     transition: opacity 200ms ease-in;
 }
 
-.signup {
+.signups {
     display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: scroll;
   width: 100%;
-  height: 100%;
+  height: 120%;
   position: fixed;
+  
 }
 
-.container {
+.containers {
     width: 50%;
-    height: 102%;
+    height: 82%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -31,7 +32,7 @@
     align-self: stretch; 
 }
 
-.container_signup p {
+.container_signups p {
     font-weight: 550;
     color: #f05537;
     font-size: 19pt;
@@ -39,7 +40,7 @@
     margin-left: -22px;
 }
 
-.container_signup h1 {
+.container_signups h1 {
     font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: 800;
@@ -56,7 +57,7 @@ form {
     color: rgb(97, 97, 97);
   }
 
-.form_detail input {
+.form_details input {
     width: 340px;
     padding: 15px;
     margin: 5px 0 22px;
@@ -66,7 +67,7 @@ form {
     border-radius: 5px;
 }
 
-.signup_button {
+.signup_buttons {
     display: inline-block;
   text-align: center;
   color: #fff;

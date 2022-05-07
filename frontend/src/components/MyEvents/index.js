@@ -52,8 +52,7 @@ const MyEvents = () => {
                                 src={`${registration.Event.imageUrl}`}
                             >
                             </img>
-                            </div>
-                            
+                            </div>                            
                             <div className="cancel_registration_button">
                                 <button className="cancel_registration" onClick={(e) => cancelTicket(e, registration.id)}>Cancel Event</button> </div>
                         </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { updateSingleEvent } from "../../store/event";
 import {useSelector, useDispatch} from "react-redux"
-
+import "./UpdateEvent.css"
 
 const UpdateEvent = ({ onClose }) => {
     const history = useHistory();
@@ -14,7 +14,7 @@ const UpdateEvent = ({ onClose }) => {
     const [name, setName] = useState(event?.name || "");
     const [imageUrl, setImageUrl] = useState(event?.imageUrl || "")
     const [description, setDescription] = useState(event?.description || "");
-    const [date, setDate] = useState(event?.date || "");
+    const [date, setDate] = useState(event?.date.slice(0, 10) || "" );
     const [location, setLocation] = useState(event?.location || "");
     const [errors, setErrors] = useState([]);
 
@@ -64,9 +64,11 @@ const UpdateEvent = ({ onClose }) => {
     }
 return (
     <div>
-        <form onSubmit={editEventSubmission}>
+        <form 
+        className="update_event"
+        onSubmit={editEventSubmission}>
             <h1>Event Details</h1>
-            <ul>{errors.map((error) => (
+            <ul className="validation-errors">{errors.map((error) => (
                 <li key={error}>
                 {error}
                 </li>))}
@@ -80,7 +82,7 @@ return (
                     className="edit_form"
                     />
                 </div>
-                <div className="">
+                <div className="description_container">
           <label> Description: </label>
           <textarea
             id="description"
@@ -89,7 +91,7 @@ return (
             className="edit_form"
             />
             </div>
-          <div>
+          <div className="imageurl_container">
           <label> ImageUrl: </label>
           <input
             id='imageUrl'
@@ -98,7 +100,7 @@ return (
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)} />
                   </div>
-          <div>
+          <div className="date_container">
 
           <label> Date: </label>
           <input
@@ -109,7 +111,7 @@ return (
 
           </input>
           </div>
-          <div>
+          <div className="location_container">
               <label> Location: </label>
               <input 
               value={location}
@@ -119,11 +121,12 @@ return (
               />
           </div>
                 <button
-                className=""
+                className="submit_event"
                 type="submit"
                 disabled={errors.length >0}
                 >Submit Event</button>
                 <button 
+                className="cancel_event"
                 type="submit"
                 onClick={onClose}> Cancel Event</button>
             

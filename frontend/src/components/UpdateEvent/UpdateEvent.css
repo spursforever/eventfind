@@ -1,0 +1,35 @@
+.update_event {
+    margin-bottom: 15px;
+  margin-left: 18px;
+  margin-right: 18px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.validation-errors {
+    color: orangered;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: opacity 200ms ease-in;
+} 
+.edit_form {
+    box-shadow: 0 1px 4px 0 rgb(34 34 34 / 10%) inset;
+    border-color: rgba(34, 34, 34, 0.15);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 6px;
+    color: #222222;
+    display: block;
+    outline: none;
+    font-family: inherit;
+    width: 320px;
+    height: 40px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 200;
+    
+}
+
+
+
+
+

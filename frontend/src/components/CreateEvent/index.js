@@ -85,7 +85,7 @@ return (
                   </div>
           <div className="date">
 
-          <label>Date: </label>
+          <label htmlFor="date">Date: </label>
           <input
           className="date_input"
           value={date}

@@ -70,7 +70,7 @@ const ticketReducer = (state = initialState, action) => {
         case ALL_TICKETS:
             return {
                 ...state,
-                list: action.tickets,
+               list: action.tickets,
             }
         case ADD_TICKET:
             if(!state[action.ticket.id]) {

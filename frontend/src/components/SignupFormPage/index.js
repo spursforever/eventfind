@@ -29,19 +29,19 @@ function SignupFormPage() {
   };
 
   return (
-      <div className="signup">
-        <div className="container">
-          <div className="container_signup">
+      <div className="signups">
+        <div className="containers">
+          <div className="container_signups">
             <p>eventfind</p>
             <h1>Create an Account</h1>
           </div>
     <form onSubmit={handleSubmit}>
-      <ul className="form_list">
+      <ul className="form_lists">
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
         Email
-        <div className="form_detail">
+        <div className="form_details">
         <input
           type="text"
           value={email}
@@ -52,7 +52,7 @@ function SignupFormPage() {
       </label>
       <label>
         Username
-        <div className="form_detail">
+        <div className="form_details">
         <input
           type="text"
           value={username}
@@ -63,7 +63,7 @@ function SignupFormPage() {
       </label>
       <label>
         Password
-        <div className="form_detail">
+        <div className="form_details">
         <input
           type="password"
           value={password}
@@ -74,7 +74,7 @@ function SignupFormPage() {
       </label>
       <label>
         Confirm Password
-        <div className="form_detail">
+        <div className="form_details">
         <input
           type="password"
           value={confirmPassword}
@@ -83,7 +83,7 @@ function SignupFormPage() {
         />
         </div>
       </label>
-      <button type="submit" className="signup_button">Sign Up</button>
+      <button type="submit" className="signup_buttons">Sign Up</button>
     </form>
     </div>
     </div>
