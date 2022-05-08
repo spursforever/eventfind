@@ -1,19 +1,37 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
+
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
+  const homePage = () => {
+    history.push('/')
+  }
+  const loginPage = () => {
+    history.push("/login")
+  }
+  const signupPage = () => {
+    history.push('/signup')
+  }
+  const createEventPage = () =>{
+    history.push("/create-event")
+  }
 
+  const myEventsPage = () => {
+    history.push(`/tickets/users/${sessionUser.id}`)
+  }
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
       <>
       <div className='home'>
         <div className='home-click'>
-           <NavLink exact to="/">Home</NavLink>
+          <button onClick={homePage}>Home</button>
+           
         </div>
      
       </div>
@@ -21,10 +39,12 @@ function Navigation({ isLoaded }){
       <div className='navigation-menu'>
         <ul className='navigation-list'>
           <li className='navigation-item'>
-            <NavLink to="/create-event">Create Event</NavLink>
+            <button onClick={createEventPage}>Create Event</button>
+            
              </li>
              <li className='navigation-item'>
-              <NavLink to={`/tickets/users/${sessionUser.id}`}>My Events</NavLink>
+               <button onClick={myEventsPage}>My Events</button>
+              
             </li>
             <li className='navigation-item'>
               <ProfileButton user={sessionUser} />
@@ -40,9 +60,15 @@ function Navigation({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+      <> 
+      <div>
+          <button className="home-button" onClick={loginPage} style={{cursor:'pointer'}}>Log In</button>
+          
+        
+       <button className="home-button"style={{cursor:'pointer'}} onClick={signupPage}>Sign Up</button>
+          
+        </div>
+        
       </>
     );
   }

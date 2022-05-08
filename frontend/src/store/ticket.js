@@ -28,8 +28,8 @@ const removeTicket = ticket => {
 }
 
 // thunk action
-export const getAllTickets = (userId) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/users/${userId}`);
+export const getAllTickets = (data) => async dispatch => {
+    const backendResponse = await csrfFetch(`/api/tickets/users/${data}`);
 
     if (backendResponse.ok) {
         const tickets = await backendResponse.json()
@@ -39,7 +39,7 @@ export const getAllTickets = (userId) => async dispatch => {
 }
 
 export const addOneTicket = (data) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/events/${data.eventId}`, {
+    const backendResponse = await csrfFetch(`/api/tickets/events/${data}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -63,18 +63,19 @@ export const deleteTicket = (id) => async dispatch => {
 }
 
 //reducer
-const initialState = {}
-const ticketReducer = (state = initialState, action) => {
-    // let updatedState;
+
+const ticketReducer = (state = {}, action) => {
+    let newState;
     switch (action.type) {
         case ALL_TICKETS:
-            return {
-                ...state,
-               list: action.tickets,
-            }
+           newState = { ...state };
+            action.tickets.forEach((ticket) => {
+                newState[ticket.id] = ticket
+            })
+            return newState
         case ADD_TICKET:
             if(!state[action.ticket.id]) {
-                const newState = {
+                 newState = {
                  ...state,
                  [action.ticket.id]: action.ticket
                 }
@@ -88,9 +89,10 @@ const ticketReducer = (state = initialState, action) => {
                 }
                }
         case REMOVE_TICKET:
-            const updatedState = {...state};
-                delete updatedState[action.ticket];
-                return updatedState
+            newState = {...state};
+                delete newState[action.ticket];
+                console.log(">>>>>>>>>>>>>>>>>>>>>>>>>", newState)
+                return newState
         default:
             return state;
     }

@@ -32,7 +32,17 @@
 
 }
 
-
+.home-button {
+  
+  background-color: white;
+    border: none;
+    height: 30px;
+    width: 100px;
+    border-radius: 3px;
+    font-style: none;
+    margin-left: 800px;
+    
+}
 
 .navigation-item {
     margin: 15px;

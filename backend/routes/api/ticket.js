@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { Event, Ticket } = require('../../db/models/');
 const router = express.Router();
 
-router.get('/users/:id', asyncHandler( async(req, res) => {
+router.get('/users/:id(\\d+)', asyncHandler( async(req, res) => {
     const id = req.params.id;
     const registeredEvents = await Ticket.findAll(
         {
@@ -15,19 +15,21 @@ router.get('/users/:id', asyncHandler( async(req, res) => {
     return res.json(registeredEvents)
 }))
 
-router.post('/events/:id', asyncHandler( async (req, res) => {
-    const id = req.params.id;
+router.post('/events/:id(\\d+)', asyncHandler( async (req, res) => {
+    // const id = req.params.id;
     const { userId, eventId } = req.body;
     const ticket = await Ticket.create({userId, eventId});
-    return res.redirect(`${req.baseUrl}/users/${userId}`)
+    return res.json(ticket)
 }));
 
-router.delete('/:id', asyncHandler(async (req, res) => {
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const ticket = await Ticket.findByPk(id)
-    if (!ticket)
-    throw new Error("The ticket can't be found, so it can't be removed!")
+    console.log("..............................", ticket)
+    // if (!ticket) {
+    //    throw new Error("The ticket can't be found, so it can't be removed!") 
+    // }    
     await ticket.destroy();
-    return res.json(id)
+    return res.json(ticket)
 }))
 module.exports = router

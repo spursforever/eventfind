@@ -6,7 +6,7 @@ const UpdateModal = () => {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-        <button onClick={()=> setShowModal(true)}>Edit</button>
+        <button className="edit_event_container" onClick={()=> setShowModal(true)}>Edit Event</button>
         {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <UpdateEvent onClose={() => setShowModal(false)}/>
