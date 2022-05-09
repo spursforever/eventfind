@@ -1,111 +1,164 @@
- 
- * {
-    box-sizing: border-box;
-  }
-
-.navigation {
-    display: flex;
-    height: 80px;
-  justify-content: right;
-  box-shadow: 0 1px 5px gray;
-  z-index: 5;
-  font-weight: bolder;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  position: relative;
-}
-.home {
-    display: flex;
-    padding: 5px;
-    height: fit-content;
-    height: 100%;
-}
-.navigation-menu ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    
-    margin-top: 13px;
-    padding: 5px;
-    margin-right: 50px;
-    list-style-type: none;
-
+* {
+  box-sizing: border-box;
 }
 
-.home-buttonA {  
+.home_container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 0px;
+  margin-right: 0px;
+  max-width: 100%;
+  justify-content: space-between;
   background-color: white;
-    border: none;
-    height: 30px;
-    width: 100px;
-    margin-left: 60px;
-    border-radius: 3px;
-    font-style: none;
-    color: orangered;
-    font-weight: bolder;      
-    font-size: 20px;        
+  min-height: 67px;
+  max-height: 67px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "left right";
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 3;
 }
 
-.home-buttonB {  
-  background-color: white;
-    border: none;
-    height: 30px;
-    width: 100px;
-    margin-right: 140px;
-    border-radius: 3px;
-    font-style: none;
-    color: orangered;
-    font-weight: bolder;
-    margin-top: 20px;
-    margin-left: 500px;
-    font-size: 20px;        
+.navbar_home {
+  grid-area: left;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: -3px;
+  margin-left: 40px;
 }
 
-.home-click {
+.home-detail {
+  grid-area: right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.home-login {
+  background-color: inherit;
   border: none;
-  background-color: white;
-}
-
-
-.navigation-item {
-  background-color: white;
+  height: 30px;
+  width: 100px;
+  border-radius: 3px;
   color: orangered;
   font-weight: bolder;
+  font-size: 16px
+}
+.home-signup {
+  background-color: inherit;
   border: none;
-  margin: 15px;
-  
-}
-.home-logo {
-  /* height: 75px;;
-  width: 100px; */
-  height: 90px;
-  width: 200px;
-  margin-top: -20px;
-  margin-left: -1000px;
-  /* margin-top: -20px; */
-  
-  object-fit: none;
+  height: 30px;
+  width: 100px;
+  border-radius: 3px;
+  color: orangered;
+  font-weight: bolder;
+  font-size: 16px
 }
 
 .home-logo {
-  /* height: 75px;;
-  width: 100px; */
-  height: 90px;
-  width: 200px;
-  margin-top: -20px;
-  margin-left: -1000px;
-  /* margin-top: -20px; */
-  
-  object-fit: none;
+  height:60px;
+  width: 120px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  align-self: center;
+  cursor: pointer;
+  object-fit: cover;
 }
 
-.home-logoA {
-  /* height: 75px;;
-  width: 100px; */
-  height: 90px;
-  width: 200px;
-  margin-top: -20px;
-  margin-left: -1400px;
-  /* margin-top: -20px; */
-  
-  object-fit: none;
+.home-details {
+  -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: relative;
+  letter-spacing: normal;
+  font-size: 16px;
+  background-color: #fff;
+
+  align-self: center;
+  margin-right: 40px;
+  display: flex;
+}
+
+.navigation-create {
+  background-color: white;
+  border: none;
+  height: 30px;
+  width: 150px;
+  border-radius: 3px;
+  margin-right: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 5px;
+  color: orangered;
+  font-weight: bolder;
+}
+
+.navigation-myevents {
+  background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 150px;
+  border-radius: 3px;
+  margin-right: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 5px;
+  color: orangered;
+  font-weight: bolder;
+}
+
+.username:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
+.profileuser {
+  border:none;
+  color: orangered;
+  background-color: white;
+}
+
+.coolstuff  {
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #eeeeee;
+  font-weight: 350;
+  margin: 50px 0 0 100px;
+  border-radius: 20px;
+  width: 120px;
+  height: fit-content;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.coolstuff > li {
+  list-style-type: none;
+  transition: font-weight;
+  padding: 3px;
+}
+.username {
+  margin-left: 23px;
+}
+
+.username:hover {
+  cursor: pointer;
+  font-weight: 600;
+}
+.logout_button {
+  background-color: transparent;
+  width: 100px;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: -25px;
+  border: none;
+}
+.profile {
+  height: 32px;
+  width: 32px;
 }

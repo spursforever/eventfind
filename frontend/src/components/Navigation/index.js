@@ -28,60 +28,68 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <div className='home'>
-        <div >
-          <img  className='home-logoA' onClick={homePage} src={homelogo} style={{cursor:'pointer'}}/>
+      <button className='navigation-create' onClick={createEventPage} style={{cursor:'pointer'}}>Create Event</button>
+      <button className='navigation-myevents' onClick={myEventsPage} style={{cursor:'pointer'}}>My Events</button>
+      <ProfileButton user={sessionUser} />
+       </>
+      //  <div className='home'>
+      //   <div >
+      //     <img  className='home-logoA' onClick={homePage} src={homelogo} style={{cursor:'pointer'}}/>
           
            
-        </div>
+      //   </div>
      
-      </div>
+      // </div>
 
-      <div className='navigation-menu'>
-        <ul className='navigation-list'>
-          <li >
-            <button className='navigation-item' onClick={createEventPage} style={{cursor:'pointer'}}>Create Event</button>
+      // <div className='navigation-menu'>
+      //   <ul className='navigation-list'>
+      //     <li >
+      //       <button className='navigation-item' onClick={createEventPage} style={{cursor:'pointer'}}>Create Event</button>
             
-             </li>
-             <li >
-               <button className='navigation-item' onClick={myEventsPage} style={{cursor:'pointer'}}>My Events</button>
+      //        </li>
+      //        <li >
+      //          <button className='navigation-item' onClick={myEventsPage} style={{cursor:'pointer'}}>My Events</button>
               
-            </li>
-            <li className='navigation-item'>
-              <ProfileButton user={sessionUser} />
-            </li>
+      //       </li>
+      //       <li className='navigation-item'>
+      //         <ProfileButton user={sessionUser} />
+      //       </li>
             
            
-            </ul>
-            </div>
+      //       </ul>
+      //       </div>
             
          
       
-      </>
+     
     );
   } else {
     sessionLinks = (
       <> 
-      <div>
-      <img  className='home-logo' onClick={homePage} src={homelogo} style={{cursor:'pointer'}}/>
-      </div>
-      <div>
-          <button className="home-buttonA" onClick={loginPage} style={{cursor:'pointer'}}>Log In</button>
+     
+     
+          <button className="home-login" onClick={loginPage} style={{cursor:'pointer'}}>{" "}Log In{" "}</button>
           
         
-       <button className="home-buttonB"style={{cursor:'pointer'}} onClick={signupPage}>Sign Up</button>
+       <button className="home-signup"style={{cursor:'pointer'}} onClick={signupPage}>{" "}Sign Up{" "}</button>
           
-        </div>
+        
         
       </>
     );
   }
 
   return (
-    <header className='navigation'>
-     
-        {isLoaded && sessionLinks}
-    </header>
+    <div className='homepage'>
+      <div className='home_container'> 
+        <div className='navbar_home'>
+        <img  className='home-logo' onClick={homePage} src={homelogo} style={{cursor:'pointer'}}/>
+        </div>
+        <div className='home-detail'>
+          <div className='home-details'>{isLoaded && sessionLinks}</div></div>
+      </div>
+    </div>
+      
    
   );
 }

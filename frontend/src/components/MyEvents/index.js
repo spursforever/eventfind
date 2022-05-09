@@ -5,14 +5,13 @@ import { useHistory, useParams } from "react-router-dom";
 import "./MyEvents.css"
 
 const MyEvents = () => {
-    const { id } = useParams();
-    const eventId = +id;
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector(state => state.session.user.id);
     const tickets = useSelector(state => state.ticket.list)
     const [allTickets, setAllTickets] = useState([]);
-    console.log("starshipppppppppppppppppp", tickets)
+    // console.log("starshipppppppppppppppppp", tickets)
+    
     useEffect(() => {
         dispatch(getAllTickets(user))
     }, [dispatch, user]);

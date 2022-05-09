@@ -39,7 +39,7 @@ export const getAllTickets = (data) => async dispatch => {
 }
 
 export const addOneTicket = (data) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/events/${data}`, {
+    const backendResponse = await csrfFetch(`/api/tickets/events/${data.eventId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -53,23 +53,21 @@ export const addOneTicket = (data) => async dispatch => {
     }
 }
 
-export const deleteTicket = (id) => async dispatch => {
-    const backendResponse = await csrfFetch(`/api/tickets/${id}`, {
+export const deleteTicket = (data) => async dispatch => {
+    const backendResponse = await csrfFetch(`/api/tickets/${data}`, {
         method: "DELETE",
     });
-
     if (backendResponse.ok) {
-        dispatch(removeTicket(id))
+        dispatch(removeTicket(data))
         const ticket = await backendResponse.json();
-        return ticket
+        
     }
 }
 
 //reducer
 
 const ticketReducer = (state = {}, action) => {
-    let newState;
-    switch (action.type) {
+      switch (action.type) {
         case ALL_TICKETS:
             return {
                 ...state,
@@ -78,7 +76,7 @@ const ticketReducer = (state = {}, action) => {
 
         case ADD_TICKET:
             if (!state[action.ticket.id]) {
-                newState = {
+               const newState = {
                     ...state,
                     [action.ticket.id]: action.ticket
                 }
@@ -92,12 +90,11 @@ const ticketReducer = (state = {}, action) => {
                 }
             }
         case REMOVE_TICKET:
-            newState = { ...state };
-            const filteredTicket = newState.list.filter(ticket => (
+         const newState = { ...state };
+            const ticketRemoval = newState.list.filter(ticket => (
                 ticket.id !== action.id
             ))
-
-            newState.list = filteredTicket
+            newState.list = ticketRemoval
             return newState;
         default:
             return state;

@@ -63,7 +63,7 @@ router.post('/', eventValidation, asyncHandler(async(req,res) => {
 router.put('/:id(\\d+)/update', requireAuth, eventValidation, asyncHandler(async (req,res) => {
   const validateErrors = validationResult(req)
  const {id} = req.user;
- console.log('-------------------------', req.user)
+//  console.log('-------------------------', req.user)
  const eventId = parseInt(req.params.id, 10);
  const updatedEvent = await Event.findByPk(eventId)
  const userId = updatedEvent.userId;
@@ -84,7 +84,7 @@ router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req,res) => 
   const removeEvent = await Event.findByPk(eventId)
   const userId = removeEvent.userId;
   const { id } = req.user
-  console.log('*******************', req.user)
+  // console.log('*******************', req.user)
   if (id === userId) {
     await removeEvent.destroy();
     return res.json("Event successfully removed!")

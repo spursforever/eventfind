@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { Event, Ticket, User } = require('../../db/models/');
+const { Event, Ticket } = require('../../db/models/');
 const router = express.Router();
 
 router.get('/users/:id', asyncHandler( async(req, res) => {
@@ -16,14 +16,14 @@ router.get('/users/:id', asyncHandler( async(req, res) => {
 }));
 
 router.post('/events/:id', asyncHandler( async (req, res) => {
-    const id = req.params.id;
+    // const id = req.params.id;
     const { userId, eventId } = req.body;
     const ticket = await Ticket.create({userId, eventId}, );
     // console.log("----------------", ticket)
     return res.json(ticket)
 }));
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
+router.delete('/:id', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const ticket = await Ticket.findByPk(id)     
     await ticket.destroy();
