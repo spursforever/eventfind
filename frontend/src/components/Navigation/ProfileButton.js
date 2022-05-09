@@ -44,7 +44,7 @@ function ProfileButton({ user }) {
         <ul className="coolstuff" onMouseLeave={closeMenu}>
           <li className="username">{user.username}</li>          
           <li className="userLogout">
-            <button className="logout_button" onClick={logout}>Log Out</button>
+            <button className="logout_button" style={{cursor:'pointer'}} onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
