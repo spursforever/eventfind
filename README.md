@@ -22,9 +22,14 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 
 5. Use the Sequelize CLI to apply the provided database migrations and seeder.
 
-    ```npx dotenv sequelize db:migrate```
+    ```npx dotenv sequelize db:migrate:undo:all```
 
     ```npx dotenv sequelize db:seed:all```
+
+5a. If you want to change your model, migration, or seeder files, run the following commands and make the according changes to it.
+    
+    ```npx dotenv sequelize db:migrate```
+    ```npx dotenv sequelize db:seed:undo:all```
 
 6. You can now test the application. (Please make sure to npm start on both front end and back end server!!!)
 
