@@ -3,6 +3,13 @@
   flex-direction: column ;
   justify-content: center;
   align-items: center;
+  margin-top: 90px;
+  
+}
+.title {
+  color: orangered;
+  margin-bottom: 10px;
+
 }
 
 .event_image {

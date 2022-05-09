@@ -40,7 +40,7 @@ const SingleEvent = () => {
 
     return (
         <>
-        <div>
+        <div className="entirebackground">
             <img
             className="specialbackground"
             src={event?.imageUrl}

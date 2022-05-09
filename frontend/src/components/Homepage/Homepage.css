@@ -9,6 +9,7 @@
     object-fit: cover;
 }
 
+
 .events {
     align-content: space-around;
     display: flex;
@@ -41,6 +42,7 @@
 .event-title {
     color: orangered;
     margin-left: 50px;
+    margin-top: 10px;
 }
 
 .images {

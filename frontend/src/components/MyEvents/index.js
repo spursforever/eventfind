@@ -45,7 +45,7 @@ const MyEvents = () => {
         detail = (
             <>
             <div className="my_events">                
-                <h1>My Events</h1>
+                <h1 className="title">My Events</h1>
                 <div className="my_events_container">
                 {allTickets.map((registration) => {
                 //    console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",allTickets)
