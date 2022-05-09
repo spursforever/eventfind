@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-
+import homelogo from "../../images/home_logo.jpg"
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -30,7 +30,8 @@ function Navigation({ isLoaded }){
       <>
       <div className='home'>
         <div >
-          <button className='home-click' onClick={homePage} style={{cursor:'pointer'}}>Home</button>
+          <img  className='home-logoA' onClick={homePage} src={homelogo} style={{cursor:'pointer'}}/>
+          
            
         </div>
      
@@ -62,10 +63,13 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <> 
       <div>
-          <button className="home-button" onClick={loginPage} style={{cursor:'pointer'}}>Log In</button>
+      <img  className='home-logo' onClick={homePage} src={homelogo} style={{cursor:'pointer'}}/>
+      </div>
+      <div>
+          <button className="home-buttonA" onClick={loginPage} style={{cursor:'pointer'}}>Log In</button>
           
         
-       <button className="home-button"style={{cursor:'pointer'}} onClick={signupPage}>Sign Up</button>
+       <button className="home-buttonB"style={{cursor:'pointer'}} onClick={signupPage}>Sign Up</button>
           
         </div>
         

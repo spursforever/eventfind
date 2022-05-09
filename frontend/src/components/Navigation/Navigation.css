@@ -6,13 +6,13 @@
 .navigation {
     display: flex;
     height: 80px;
-  justify-content: space-between;
+  justify-content: right;
   box-shadow: 0 1px 5px gray;
   z-index: 5;
   font-weight: bolder;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
-  position: sticky;
+  position: relative;
 }
 .home {
     display: flex;
@@ -32,19 +32,32 @@
 
 }
 
-.home-button {  
+.home-buttonA {  
   background-color: white;
     border: none;
     height: 30px;
     width: 100px;
+    margin-left: 60px;
+    border-radius: 3px;
+    font-style: none;
+    color: orangered;
+    font-weight: bolder;      
+    font-size: 20px;        
+}
+
+.home-buttonB {  
+  background-color: white;
+    border: none;
+    height: 30px;
+    width: 100px;
+    margin-right: 140px;
     border-radius: 3px;
     font-style: none;
     color: orangered;
     font-weight: bolder;
     margin-top: 20px;
-    margin-left: 500px;  
-   
-    
+    margin-left: 500px;
+    font-size: 20px;        
 }
 
 .home-click {
@@ -60,4 +73,39 @@
   border: none;
   margin: 15px;
   
+}
+.home-logo {
+  /* height: 75px;;
+  width: 100px; */
+  height: 90px;
+  width: 200px;
+  margin-top: -20px;
+  margin-left: -1000px;
+  /* margin-top: -20px; */
+  
+  object-fit: none;
+}
+
+.home-logo {
+  /* height: 75px;;
+  width: 100px; */
+  height: 90px;
+  width: 200px;
+  margin-top: -20px;
+  margin-left: -1000px;
+  /* margin-top: -20px; */
+  
+  object-fit: none;
+}
+
+.home-logoA {
+  /* height: 75px;;
+  width: 100px; */
+  height: 90px;
+  width: 200px;
+  margin-top: -20px;
+  margin-left: -1400px;
+  /* margin-top: -20px; */
+  
+  object-fit: none;
 }
