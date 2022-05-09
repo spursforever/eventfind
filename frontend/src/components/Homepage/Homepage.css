@@ -36,6 +36,11 @@
     box-shadow: 0 0 10px grey;
 }
 
+.event-title {
+    color: orangered;
+    margin-left: 50px;
+}
+
 .images {
     padding-bottom: 10px;
 }

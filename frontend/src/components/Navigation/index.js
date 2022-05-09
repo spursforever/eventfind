@@ -29,8 +29,8 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <>
       <div className='home'>
-        <div className='home-click'>
-          <button onClick={homePage}>Home</button>
+        <div >
+          <button className='home-click' onClick={homePage} style={{cursor:'pointer'}}>Home</button>
            
         </div>
      
@@ -38,12 +38,12 @@ function Navigation({ isLoaded }){
 
       <div className='navigation-menu'>
         <ul className='navigation-list'>
-          <li className='navigation-item'>
-            <button onClick={createEventPage}>Create Event</button>
+          <li >
+            <button className='navigation-item' onClick={createEventPage} style={{cursor:'pointer'}}>Create Event</button>
             
              </li>
-             <li className='navigation-item'>
-               <button onClick={myEventsPage}>My Events</button>
+             <li >
+               <button className='navigation-item' onClick={myEventsPage} style={{cursor:'pointer'}}>My Events</button>
               
             </li>
             <li className='navigation-item'>

@@ -1,7 +1,7 @@
- /* * {
-    margin: 0;
-    padding: 0
-  } */
+ 
+ * {
+    box-sizing: border-box;
+  }
 
 .navigation {
     display: flex;
@@ -32,18 +32,32 @@
 
 }
 
-.home-button {
-  
+.home-button {  
   background-color: white;
     border: none;
     height: 30px;
     width: 100px;
     border-radius: 3px;
     font-style: none;
-    margin-left: 800px;
+    color: orangered;
+    font-weight: bolder;
+    margin-top: 20px;
+    margin-left: 500px;  
+   
     
 }
 
+.home-click {
+  border: none;
+  background-color: white;
+}
+
+
 .navigation-item {
-    margin: 15px;
+  background-color: white;
+  color: orangered;
+  font-weight: bolder;
+  border: none;
+  margin: 15px;
+  
 }

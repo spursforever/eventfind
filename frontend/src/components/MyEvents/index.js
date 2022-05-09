@@ -1,31 +1,35 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect,useState } from "react";
 import { getAllTickets, deleteTicket } from "../../store/ticket";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import "./MyEvents.css"
 
 const MyEvents = () => {
-
+    const { id } = useParams();
+    const eventId = +id;
     const history = useHistory();
     const dispatch = useDispatch();
-    const user = useSelector(state => state.session.user);
-    const tickets = useSelector(state => state.ticket)
+    const user = useSelector(state => state.session.user.id);
+    const tickets = useSelector(state => state.ticket.list)
     const [allTickets, setAllTickets] = useState([]);
-
+    console.log("starshipppppppppppppppppp", tickets)
     useEffect(() => {
-        dispatch(getAllTickets(user.id))
-    }, [dispatch]);
+        dispatch(getAllTickets(user))
+    }, [dispatch, user]);
+
     useEffect(() => {
         if (tickets) {
             setAllTickets(Object.values(tickets))
         }
     }, [tickets])
+
     const cancelTicket = (e, ticketId) => {
         e.preventDefault();
         dispatch(deleteTicket(ticketId));
-        dispatch(getAllTickets(user.id));
-        history.push(`/tickets/users/${user.id}`)
+        dispatch(getAllTickets(user));
+        history.push(`/tickets/users/${user}`)
     }
+    
     let detail;
 
     if (!tickets) {
@@ -44,11 +48,13 @@ const MyEvents = () => {
             <div className="my_events">                
                 <h1>My Events</h1>
                 <div className="my_events_container">
-                {allTickets.length && allTickets.map((registration) => {
+                {allTickets.map((registration) => {
+                //    console.log("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",allTickets)
                     return (
                         <div className="ticketlist" key={registration.id}>
                             <div className="event_names">
                                 <h3>{registration?.Event.name}</h3>
+                                
                             </div>
                             <div className="event_image">
                             <img
@@ -63,7 +69,10 @@ const MyEvents = () => {
                                 <button className="cancel_registration" type="submit" onClick={(e) => cancelTicket(e, registration.id)}>Cancel Event</button> </div>
                         </div>
                     )
-                })}
+                } ) }
+                
+               
+                
             </div>
             </div>
             </>

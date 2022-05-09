@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
 const router = express.Router()
-const { Event } = require('../../db/models')
+const { Event, Ticket, User } = require('../../db/models')
 
 const eventValidation = [
     check('name')
@@ -34,7 +34,11 @@ router.get('/', asyncHandler(async(req,res) => {
 // Display a specific event 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     let eventId = parseInt(req.params.id, 10);
-    let singleEvent = await Event.findByPk(eventId);
+    let singleEvent = await Event.findByPk(eventId,
+      {
+        include: [User, {model: Ticket, include: User}]
+      });
+        console.log("--,-,--,-,-,-,-,-,-,",singleEvent)
     return res.json(singleEvent)
 }));
 

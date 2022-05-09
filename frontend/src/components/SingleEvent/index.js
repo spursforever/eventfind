@@ -5,7 +5,7 @@ import { displaySingleEvent, removeSingleEvent } from "../../store/event";
 import "./SingleEvent.css"
 import UpdateModal from "../UpdateEvent/UpdateEvent";
 import { addOneTicket } from "../../store/ticket";
-import Footer from "../Footer";
+
 
 const SingleEvent = () => {
     const { id } = useParams();
@@ -14,7 +14,7 @@ const SingleEvent = () => {
     const dispatch = useDispatch();
     const event = useSelector((state) => state.event[id]);
     const sessionUser = useSelector((state) => state.session.user?.id);
-
+    console.log('------------------->', event)
     useEffect(() => {
         dispatch(displaySingleEvent(id));
     }, [dispatch, id])

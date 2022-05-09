@@ -111,6 +111,7 @@ const eventsReducer = (state = {}, action) => {
         case SINGLE_EVENT:
             updatedState = { ...state };
             updatedState[action.event.id] = action.event
+            console.log("))))))))))))))", action.event)
             return updatedState;
         case CREATE_EVENT:
             updatedState = { ...state };

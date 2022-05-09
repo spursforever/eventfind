@@ -44,9 +44,11 @@ export const addOneTicket = (data) => async dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
+    // console.log("->>>>>>>>>>>>>>>>>>", data)
     if (backendResponse.ok) {
         const registeredEvent = await backendResponse.json();
         dispatch(addTicket(registeredEvent));
+        console.log("->>>>>>>>>>>>>>>>>>", registeredEvent)
         return registeredEvent
     }
 }
@@ -55,10 +57,11 @@ export const deleteTicket = (id) => async dispatch => {
     const backendResponse = await csrfFetch(`/api/tickets/${id}`, {
         method: "DELETE",
     });
+
     if (backendResponse.ok) {
-         dispatch(removeTicket(id))
+        dispatch(removeTicket(id))
         const ticket = await backendResponse.json();
-         return ticket
+        return ticket
     }
 }
 
@@ -68,31 +71,34 @@ const ticketReducer = (state = {}, action) => {
     let newState;
     switch (action.type) {
         case ALL_TICKETS:
-           newState = { ...state };
-            action.tickets.forEach((ticket) => {
-                newState[ticket.id] = ticket
-            })
-            return newState
+            return {
+                ...state,
+                list: action.tickets,
+            }
+
         case ADD_TICKET:
-            if(!state[action.ticket.id]) {
-                 newState = {
-                 ...state,
-                 [action.ticket.id]: action.ticket
+            if (!state[action.ticket.id]) {
+                newState = {
+                    ...state,
+                    [action.ticket.id]: action.ticket
                 }
                 return newState
-               }
-               return {
+            }
+            return {
                 ...state,
                 [action.ticket.id]: {
-                 ...state[action.ticket.id],
-                 ...action.ticket
+                    ...state[action.ticket.id],
+                    ...action.ticket
                 }
-               }
+            }
         case REMOVE_TICKET:
-            newState = {...state};
-                delete newState[action.ticket];
-                console.log(">>>>>>>>>>>>>>>>>>>>>>>>>", newState)
-                return newState
+            newState = { ...state };
+            const filteredTicket = newState.list.filter(ticket => (
+                ticket.id !== action.id
+            ))
+
+            newState.list = filteredTicket
+            return newState;
         default:
             return state;
     }
