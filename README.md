@@ -1,5 +1,5 @@
 # Eventfind
-Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.eventbrite.com/) where users can view and create their own desire events.
+Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.eventbrite.com/) where users have the ability to create, edit, delete their own events.
 
 ## Link to Livesite
 [eventfind](https://eventfind.herokuapp.com/)
@@ -38,7 +38,7 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 7. You can sign in via Demo User or create an account yourself
 
 ## Database Schema
-![drawSQL-export-2022-05-01_13_36](https://user-images.githubusercontent.com/94093737/166179917-82286b4b-ec00-44f7-8371-4b350260e8d3.png)
+![eventfind](https://user-images.githubusercontent.com/94093737/167735493-5c73146e-7f54-40c1-97fb-67ca5a9c62c8.png)
 
 ## Features
 1. Users
