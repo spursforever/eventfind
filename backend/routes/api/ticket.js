@@ -15,11 +15,9 @@ router.get('/users/:id', asyncHandler( async(req, res) => {
     return res.json(registeredEvents)
 }));
 
-router.post('/events/:id', asyncHandler( async (req, res) => {
-    // const id = req.params.id;
+router.post('/events/:id', asyncHandler( async (req, res) => {   
     const { userId, eventId } = req.body;
-    const ticket = await Ticket.create({userId, eventId}, );
-    // console.log("----------------", ticket)
+    const ticket = await Ticket.create({userId, eventId}, );    
     return res.json(ticket)
 }));
 

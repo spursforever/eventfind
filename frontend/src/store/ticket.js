@@ -43,8 +43,7 @@ export const addOneTicket = (data) => async dispatch => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
-    });
-    // console.log("->>>>>>>>>>>>>>>>>>", data)
+    });    
     if (backendResponse.ok) {
         const registeredEvent = await backendResponse.json();
         dispatch(addTicket(registeredEvent));
@@ -65,7 +64,6 @@ export const deleteTicket = (data) => async dispatch => {
 }
 
 //reducer
-
 const ticketReducer = (state = {}, action) => {
       switch (action.type) {
         case ALL_TICKETS:

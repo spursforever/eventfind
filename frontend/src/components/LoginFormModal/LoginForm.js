@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import "./LoginForm.css"
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -10,6 +10,7 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
+
   if (sessionUser) 
   return (
     <Redirect to="/" />
@@ -74,8 +75,7 @@ function LoginForm() {
       {demologin()}
     </form>
       </div>
-      </div>
-      
+      </div>      
   );
 }
 

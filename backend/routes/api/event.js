@@ -7,7 +7,7 @@ const router = express.Router()
 const { Event, Ticket, User } = require('../../db/models')
 
 const eventValidation = [
-    check('name')
+  check('name')
     .exists({ checkFalsy: true })
     .withMessage('Please provide an event name.'),
   check('description')
@@ -21,34 +21,30 @@ const eventValidation = [
     .withMessage('Please provide a date of the event.'),
   check('location')
     .exists({ checkFalsy: true })
-    .withMessage("Please provide event's location."), 
-    handleValidationErrors
+    .withMessage("Please provide event's location."),
+  handleValidationErrors
 ]
 
 //  Display all events on homepage
-router.get('/', asyncHandler(async(req,res) => {
-    const allEvents = await Event.findAll();
-    return res.json(allEvents);
+router.get('/', asyncHandler(async (req, res) => {
+  const allEvents = await Event.findAll();
+  return res.json(allEvents);
 }))
 
 // Display a specific event 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
-    let eventId = parseInt(req.params.id, 10);
-    let singleEvent = await Event.findByPk(eventId,
-      {
-        include: [User, {model: Ticket, include: User}]
-      });
-        console.log("--,-,--,-,-,-,-,-,-,",singleEvent)
-    return res.json(singleEvent)
+  let eventId = parseInt(req.params.id, 10);
+  let singleEvent = await Event.findByPk(eventId,
+    {
+      include: [User, { model: Ticket, include: User }]
+    });
+  console.log("--,-,--,-,-,-,-,-,-,", singleEvent)
+  return res.json(singleEvent)
 }));
 
 // Create a new event
-router.post('/', eventValidation, asyncHandler(async(req,res) => {
-  // const {id} = req.user;
-  console.log("------------------", req.user)
-  console.log("---------------", req.body)
-  // const id = 1
-  const {name, description, imageUrl, date, location, userId} = req.body
+router.post('/', eventValidation, asyncHandler(async (req, res) => {
+  const { name, description, imageUrl, date, location, userId } = req.body
   const event = await Event.create({
     userId,
     name,
@@ -60,31 +56,29 @@ router.post('/', eventValidation, asyncHandler(async(req,res) => {
   res.json(event)
 }))
 
-router.put('/:id(\\d+)/update', requireAuth, eventValidation, asyncHandler(async (req,res) => {
+router.put('/:id(\\d+)/update', requireAuth, eventValidation, asyncHandler(async (req, res) => {
   const validateErrors = validationResult(req)
- const {id} = req.user;
-//  console.log('-------------------------', req.user)
- const eventId = parseInt(req.params.id, 10);
- const updatedEvent = await Event.findByPk(eventId)
- const userId = updatedEvent.userId;
- const {name, description, imageUrl, date, location} = req.body
- if (id === userId) {
-   if (validateErrors.isEmpty()) {
-     const event = await updatedEvent.update({name, description, imageUrl, date, location});
-     await updatedEvent.save()
-     return res.json(event)
-   } else {
-     res.json(validateErrors)
-   }
- }
+  const { id } = req.user;
+  const eventId = parseInt(req.params.id, 10);
+  const updatedEvent = await Event.findByPk(eventId)
+  const userId = updatedEvent.userId;
+  const { name, description, imageUrl, date, location } = req.body
+  if (id === userId) {
+    if (validateErrors.isEmpty()) {
+      const event = await updatedEvent.update({ name, description, imageUrl, date, location });
+      await updatedEvent.save()
+      return res.json(event)
+    } else {
+      res.json(validateErrors)
+    }
+  }
 }))
 
-router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req,res) => {
+router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req, res) => {
   const eventId = parseInt(req.params.id, 10);
   const removeEvent = await Event.findByPk(eventId)
   const userId = removeEvent.userId;
   const { id } = req.user
-  // console.log('*******************', req.user)
   if (id === userId) {
     await removeEvent.destroy();
     return res.json("Event successfully removed!")

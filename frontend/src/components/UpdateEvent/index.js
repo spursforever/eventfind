@@ -128,8 +128,7 @@ return (
                 <button 
                 className="cancel_event"
                 type="submit"
-                onClick={onClose}> Cancel Event</button>
-            
+                onClick={onClose}> Cancel Event</button>            
         </form>
         </div>
 )
