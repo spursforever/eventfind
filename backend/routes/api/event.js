@@ -5,6 +5,7 @@ const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
 const router = express.Router()
 const { Event, Ticket, User } = require('../../db/models')
+const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3")
 
 const eventValidation = [
   check('name')
@@ -43,8 +44,9 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 }));
 
 // Create a new event
-router.post('/', eventValidation, asyncHandler(async (req, res) => {
-  const { name, description, imageUrl, date, location, userId } = req.body
+router.post('/', singleMulterUpload("image"), asyncHandler(async (req, res) => {
+  const { name, description, date, location, userId } = req.body
+  const imageUrl = await singlePublicFileUpload(req.file);
   const event = await Event.create({
     userId,
     name,
