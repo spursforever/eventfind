@@ -62,11 +62,20 @@ export const displaySingleEvent = (id) => async dispatch => {
 
 }
 
-export const createSingleEvent = (data) => async dispatch => {
+export const createSingleEvent = (data) => async (dispatch) => {
+    const { user_Id, name, image, description, date, location } = data
+    const formData = new FormData();
+    formData.append("user_Id", user_Id);
+    formData.append("name", name);
+    formData.append("image", image);
+    formData.append("description", description);
+    formData.append("date", date);
+    formData.append("location", location);
+
     const backendResponse = await csrfFetch(`/api/events`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        headers: { "Content-Type": "multipart/form-data" },
+        body: formData,
     })
     if (backendResponse.ok) {
         const event = await backendResponse.json();
@@ -78,7 +87,7 @@ export const createSingleEvent = (data) => async dispatch => {
 export const updateSingleEvent = (data) => async (dispatch) => {
     const backendResponse = await csrfFetch(`/api/events/${data.id}/update`, {
         method: "PUT",
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
     if (backendResponse.ok) {
@@ -91,7 +100,7 @@ export const updateSingleEvent = (data) => async (dispatch) => {
 export const removeSingleEvent = (data) => async (dispatch) => {
     const backendResponse = await csrfFetch(`/api/events/${data}/remove`, {
         method: "DELETE",
-         })
+    })
     if (backendResponse.ok) {
         await dispatch(remove(data))
         const removingEvent = await backendResponse.json()
@@ -111,7 +120,7 @@ const eventsReducer = (state = {}, action) => {
             return updatedState;
         case SINGLE_EVENT:
             updatedState = { ...state };
-            updatedState[action.event.id] = action.event           
+            updatedState[action.event.id] = action.event
             return updatedState;
         case CREATE_EVENT:
             updatedState = { ...state };
@@ -122,9 +131,9 @@ const eventsReducer = (state = {}, action) => {
             updatedState[action.event.id] = action.event;
             return updatedState
         case REMOVE_EVENT:
-                updatedState = {...state};
-                delete updatedState[action.event];
-                return updatedState
+            updatedState = { ...state };
+            delete updatedState[action.event];
+            return updatedState
         default:
             return state;
     }
