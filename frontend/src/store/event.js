@@ -63,18 +63,19 @@ export const displaySingleEvent = (id) => async dispatch => {
 }
 
 export const createSingleEvent = (data) => async (dispatch) => {
-    const { userId, name, image, description, date, location } = data
-    const newData = new FormData();
-    newData.append("userId", userId);
-    newData.append("name", name);
-    newData.append("image", image);
-    newData.append("description", description);
-    newData.append("date", date);
-    newData.append("location", location);
+    const { user_Id, name, image, description, date, location } = data
+    const formData = new FormData();
+    formData.append("user_Id", user_Id);
+    formData.append("name", name);
+    formData.append("image", image);
+    formData.append("description", description);
+    formData.append("date", date);
+    formData.append("location", location);
+
     const backendResponse = await csrfFetch(`/api/events`, {
         method: 'POST',
         headers: { "Content-Type": "multipart/form-data" },
-        body: newData,
+        body: formData,
     })
     if (backendResponse.ok) {
         const event = await backendResponse.json();

@@ -10,7 +10,7 @@ const CreateEvent = () => {
     const dispatch = useDispatch();
 
     const [name, setName] = useState("");
-    const [imageUrl, setImageUrl] = useState("")
+    const [image, setImage] = useState(null)
     const [description, setDescription] = useState("");
     const [date, setDate] = useState("");
     const [location, setLocation] = useState("");
@@ -20,9 +20,10 @@ const CreateEvent = () => {
         const validationErrors = [];
         if (!name) {
             validationErrors.push("Please provide an event name.")
-        } if (!imageUrl) {
-            validationErrors.push("Please provide an image URL of the event.")
         }
+        // } if (!imageUrl) {
+        //     validationErrors.push("Please provide an image URL of the event.")
+        // }
         if (!description) {
             validationErrors.push("Please provide an event description.")
         } if (!date) {
@@ -30,18 +31,18 @@ const CreateEvent = () => {
         } if (!location) {
             validationErrors.push("Please provide event's location.")
         } setErrors(validationErrors)
-    }, [name, description, date, location, imageUrl, dispatch])
+    }, [name, description, date, location, image, dispatch])
 
 
     const eventSubmission = (e) => {
         e.preventDefault();
         const payload = {
-            userId: user.id,
+            user_Id: user.id,
             name,
             description,
             date,
             location,
-            imageUrl
+            image
         };
         dispatch((createSingleEvent(payload)))
             .then((res) => {
@@ -50,6 +51,13 @@ const CreateEvent = () => {
             .catch(async (err) => {
                 const errors = await err.json();
             });
+    }
+
+    const imageUpload = (e) => {
+        const awsFile = e.target.files[0];
+        if (awsFile) {
+            setImage(awsFile)
+        }
     }
 
     return (
@@ -80,12 +88,11 @@ const CreateEvent = () => {
                     />
                 </div>
                 <div>
-                    <label>ImageUrl: </label>
+                    <label>Upload Image: </label>
                     <input
-                        id="form-label-image-url"
-                        className="url_input"
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)} />
+                        type="file"
+                        className="aws_upload"                        
+                        onChange={imageUpload} />
                 </div>
                 <div className="date">
                     <label htmlFor="date">Date: </label>

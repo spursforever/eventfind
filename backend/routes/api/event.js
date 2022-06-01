@@ -45,17 +45,18 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
 
 // Create a new event
 router.post('/', singleMulterUpload("image"), asyncHandler(async (req, res) => {
-  const { name, description, date, location, userId } = req.body
+ 
+  const { name, description, date, location, user_Id } = req.body
   const imageUrl = await singlePublicFileUpload(req.file);
   const event = await Event.create({
-    userId,
+    userId: user_Id,
     name,
     description,
     imageUrl,
     date,
     location
   });
-  res.json(event)
+  return res.json(event)
 }))
 
 router.put('/:id(\\d+)/update', requireAuth, eventValidation, asyncHandler(async (req, res) => {
