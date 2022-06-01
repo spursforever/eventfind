@@ -55,6 +55,7 @@ h1 {
   font-size: 18px;
   font-weight: 200;
 }
+
 .url_input {
     color: black;
     display: block;
@@ -122,3 +123,17 @@ h1 {
     cursor: pointer;
 }
 
+.aws_upload {
+    color: #222222;
+  display: block;
+  font-family: inherit;
+  width: 400px;
+  height: 40px;
+  border: 1px solid gray;
+  padding: 8px;
+  font-size: 15px;
+  font-weight: 200;
+  border-radius: 2px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
