@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
 const { requireAuth } = require('../../utils/auth')
 const router = express.Router()
-const { Event, Ticket, User } = require('../../db/models')
+const { Event, Ticket, User, Tag } = require('../../db/models')
 const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3")
 
 const eventValidation = [
@@ -87,4 +87,17 @@ router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req, res) =>
     return res.json("Event successfully removed!")
   } else return res.status(401).json({ errors: ['Unauthorized.'] });
 }))
+
+router.get('/category/:categoryId', asyncHandler(async (req, res) => {
+
+  let categoryId = parseInt(req.params.categoryId, 10);
+  
+  let categoryList = await Tag.findAll({
+      where: {categoryId: categoryId},
+      include: {model: Event}
+  });
+
+  return res.json(categoryList.map(tag => tag.Event));
+}));
+
 module.exports = router

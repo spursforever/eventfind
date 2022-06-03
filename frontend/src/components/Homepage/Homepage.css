@@ -61,3 +61,24 @@
     color: orangered;
     text-align: center
 }
+
+.category_scroll {
+    margin-top: 30px;
+  /* margin-left: 5px; */
+}
+
+.category_buttons {
+    background-color: inherit;
+  border: none;
+  height: 30px;
+  width: 118px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #6f7287;
+}
+
+.category_buttons:hover {
+    border-width: 2px;
+  border-bottom: black solid;
+  color: light-orange;
+}
