@@ -44,14 +44,14 @@ const AllEvents = () => {
                 src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
             </img>
             <h1 className="event-title">Popular in <span>the World </span></h1>
-            <div>
-                <button className='' onClick={() => { obtainCategoryId(0) }} style={{ cursor: 'pointer' }}>All Events</button>
-                <button className='' onClick={() => { obtainCategoryId(1) }} style={{ cursor: 'pointer' }}>Food</button>
-                <button className='' onClick={() => { obtainCategoryId(2) }} style={{ cursor: 'pointer' }}>Business</button>
-                <button className='' onClick={() => { obtainCategoryId(3) }} style={{ cursor: 'pointer' }}>Films and Media</button>
-                <button className='' onClick={() => { obtainCategoryId(4) }} style={{ cursor: 'pointer' }}>Music</button>
-                <button className='' onClick={() => { obtainCategoryId(5) }} style={{ cursor: 'pointer' }}>Sports and Fitness</button>
-                <button className='' onClick={() => { obtainCategoryId(6) }} style={{ cursor: 'pointer' }}>Fashion</button>
+            <div className="category_scroll">
+                <button className='category_buttons' onClick={() => { obtainCategoryId(0) }} style={{ cursor: 'pointer' }}>All Events</button>
+                <button className='category_buttons' onClick={() => { obtainCategoryId(1) }} style={{ cursor: 'pointer' }}>Food</button>
+                <button className='category_buttons' onClick={() => { obtainCategoryId(2) }} style={{ cursor: 'pointer' }}>Business</button>
+                <button id="films_and_media" className='category_buttons' onClick={() => { obtainCategoryId(3) }} style={{ cursor: 'pointer' }}>Films</button>
+                <button className='category_buttons' onClick={() => { obtainCategoryId(4) }} style={{ cursor: 'pointer' }}>Music</button>
+                <button id="sports_and_fitness" className='category_buttons' onClick={() => { obtainCategoryId(5) }} style={{ cursor: 'pointer' }}>Sports</button>
+                <button className='category_buttons' onClick={() => { obtainCategoryId(6) }} style={{ cursor: 'pointer' }}>Fashion</button>
 
             </div>
             <div className="events">
