@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import {useDispatch, useSelector} from "react-redux"
-import { displayAllEvents } from "../../store/event"
+import { useDispatch, useSelector } from "react-redux"
+import { displayAllEvents, filteringEvent } from "../../store/event"
 import './Homepage.css'
 import Footer from "../Footer"
 
@@ -10,7 +10,7 @@ const AllEvents = () => {
     const [allEvents, setAllEvents] = useState([]);
     const dispatch = useDispatch();
     const eventDisplay = useSelector((status) => status.event)
-    
+
     useEffect(() => {
         dispatch(displayAllEvents())
     }, [dispatch])
@@ -20,34 +20,62 @@ const AllEvents = () => {
             setAllEvents(Object.values(eventDisplay));
         }
     }, [eventDisplay])
-    
+
+    const obtainCategoryId = (categoryId) => {
+        if (categoryId === 0) {
+            dispatch(displayAllEvents())
+        } else {
+            return (
+                dispatch(filteringEvent(categoryId))
+            )
+        }
+        window.scroll({
+            top: 625,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
     return (
         <>
-        <img 
-        id="splashpage"       
-        alt=""
-        src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">            
-        </img>
-                <h1 className="event-title">All Popular Events</h1>
-        <div className="events">
-        {allEvents.length && allEvents.map((event) => (
-            <Link key={`${event?.id}`}
-            to={`/events/${event?.id}`}>
-            <div className="event_design">
-            <div className="images">
-                <img
-                    height={250}
-                    width={380}
-                    alt={event?.name}
-                    src={event?.imageUrl}
-                  />
-                  </div>
-                <div className="event_name">{event?.name}</div>
-                </div>
-            </Link>
-        ))}
-        </div>
-        <Footer />
+            <img
+                id="splashpage"
+                alt=""
+                src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80">
+            </img>
+            <h1 className="event-title">Popular in <span>the World </span></h1>
+            <div>
+                <button className='' onClick={() => { obtainCategoryId(0) }} style={{ cursor: 'pointer' }}>All Events</button>
+                <button className='' onClick={() => { obtainCategoryId(1) }} style={{ cursor: 'pointer' }}>Food</button>
+                <button className='' onClick={() => { obtainCategoryId(2) }} style={{ cursor: 'pointer' }}>Business</button>
+                <button className='' onClick={() => { obtainCategoryId(3) }} style={{ cursor: 'pointer' }}>Films and Media</button>
+                <button className='' onClick={() => { obtainCategoryId(4) }} style={{ cursor: 'pointer' }}>Music</button>
+                <button className='' onClick={() => { obtainCategoryId(5) }} style={{ cursor: 'pointer' }}>Sports and Fitness</button>
+                <button className='' onClick={() => { obtainCategoryId(6) }} style={{ cursor: 'pointer' }}>Fashion</button>
+
+            </div>
+            <div className="events">
+                {allEvents.length && allEvents.map((event) => (
+                    <Link key={`${event?.id}`}
+                        to={`/events/${event?.id}`}>
+                        <div className="event_design">
+                            <div className="images">
+                                <img
+                                    height={250}
+                                    width={380}
+                                    alt={event?.name}
+                                    src={event?.imageUrl}
+                                />
+                            </div>
+                            <div className="event_name">{event?.name}</div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+            <div>
+                <Footer />
+            </div>
+
         </>
     )
 }
