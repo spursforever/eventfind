@@ -87,4 +87,17 @@ router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req, res) =>
     return res.json("Event successfully removed!")
   } else return res.status(401).json({ errors: ['Unauthorized.'] });
 }))
+
+router.get('/category/:categoryId', asyncHandler(async (req, res) => {
+
+  const categoryId = parseInt(req.params.categoryId, 10);
+  
+  const categoryList = await Tag.findAll({
+      where: {categoryId: categoryId},
+      include: {model: Event}
+  });
+
+  return res.json(categoryList.map(tag => tag.Event));
+}));
+
 module.exports = router
