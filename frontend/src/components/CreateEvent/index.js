@@ -98,6 +98,7 @@ const CreateEvent = () => {
                     <label htmlFor="date">Date: </label>
                     <input
                         className="date_input"
+                        type="date"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}>
                     </input>
