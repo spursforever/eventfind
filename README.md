@@ -38,7 +38,7 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 7. You can sign in via Demo User or create an account yourself
 
 ## Database Schema
-![eventfind](https://user-images.githubusercontent.com/94093737/167735493-5c73146e-7f54-40c1-97fb-67ca5a9c62c8.png)
+![eventfind](https://user-images.githubusercontent.com/94093737/171985233-aa2d5ba7-9db6-4fd9-832e-d09e79ed81c9.png)
 
 ## Features
 1. Users
