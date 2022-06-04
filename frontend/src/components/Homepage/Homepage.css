@@ -43,6 +43,13 @@
     color: orangered;
     margin-left: 50px;
     margin-top: 10px;
+    font-weight: 600;
+}
+
+.the_world {
+    color: purple;
+    font-weight: 600;
+    font-size: 70%
 }
 
 .images {
@@ -64,7 +71,7 @@
 
 .category_scroll {
     margin-top: 30px;
-  /* margin-left: 5px; */
+  margin-left: 5px;
 }
 
 .category_buttons {
@@ -74,11 +81,11 @@
   width: 118px;
   font-size: 18px;
   font-weight: 600;
-  color: #6f7287;
+  color: green;
+  margin-left: 40px
 }
 
 .category_buttons:hover {
     border-width: 2px;
-  border-bottom: black solid;
-  color: light-orange;
+  border-bottom: green solid;
 }

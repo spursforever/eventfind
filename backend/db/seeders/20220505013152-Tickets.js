@@ -5,13 +5,19 @@ module.exports = {
 
     return queryInterface.bulkInsert('Tickets', [
       {
-        eventId: 1,
+        eventId: 3,
         userId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         eventId: 10,
+        userId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        eventId: 15,
         userId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),

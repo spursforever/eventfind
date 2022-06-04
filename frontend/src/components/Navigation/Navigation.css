@@ -127,18 +127,21 @@
   flex-direction: column;
   position: absolute;
   background-color: #eeeeee;
-  font-weight: 350;
-  margin: 50px 0 0 100px;
+  font-weight: 350; 
+  margin-top: 50px; 
+  margin-left: 280px;
   border-radius: 20px;
   width: 120px;
   height: fit-content;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  
 }
 
 .coolstuff > li {
   list-style-type: none;
   transition: font-weight;
   padding: 3px;
+  
 }
 .username {
   margin-left: 23px;
@@ -155,7 +158,7 @@
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 14px;
-  margin-left: -25px;
+  
   border: none;
 }
 .profile {

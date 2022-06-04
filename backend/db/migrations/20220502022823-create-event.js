@@ -13,7 +13,7 @@ module.exports = {
         references: { model: "Users" },
       },
       name: {
-        type: Sequelize.STRING(60),
+        type: Sequelize.STRING(80),
         allowNull: false,
       },
       description: {
