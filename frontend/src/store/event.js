@@ -6,6 +6,7 @@ const CREATE_EVENT = 'events/CREATE_EVENT'
 const UPDATE_EVENT = 'events/UPDATE_EVENT'
 const REMOVE_EVENT = 'events/REMOVE_EVENT'
 const CATEGORIZE_EVENTS = 'events/CATEGORIZE_EVENTS'
+const SEARCH_EVENTS = 'events/SEARCH_EVENTS'
 
 // action creators
 const allEvents = (events) => {
@@ -46,6 +47,13 @@ const remove = (event) => {
 const filterEvent = (events) => {
     return {
         type: CATEGORIZE_EVENTS,
+        payload: events,
+    }
+}
+
+const searchEvent = (events) => {
+    return {
+        type: SEARCH_EVENTS,
         payload: events,
     }
 }
@@ -124,6 +132,14 @@ export const filteringEvent = (categoryId) => async dispatch => {
     }
 }
 
+export const searchingForEvent = (keyword) => async dispatch => {
+    const backendResponse = await csrfFetch(`/api/events/search/${keyword}`)
+    if (backendResponse.ok) {
+        const desiredEvent = await backendResponse.json();
+        dispatch(searchEvent(desiredEvent))
+    }
+}
+
 // reducer
 const eventsReducer = (state = {}, action) => {
     let updatedState;
@@ -157,6 +173,13 @@ const eventsReducer = (state = {}, action) => {
                 return events
             }, {});
             return updatedState
+            case SEARCH_EVENTS:
+                updatedState = {...state};
+                updatedState = action.payload.reduce((events, event) => {
+                    events[event.id] = event;
+                    return events
+                }, {});
+                return updatedState
         default:
             return state;
 

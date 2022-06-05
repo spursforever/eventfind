@@ -1,4 +1,5 @@
 const express = require('express');
+const Sequelize = require('sequelize');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
@@ -6,6 +7,7 @@ const { requireAuth } = require('../../utils/auth')
 const router = express.Router()
 const { Event, Ticket, User, Tag } = require('../../db/models')
 const { singlePublicFileUpload, singleMulterUpload } = require("../../awsS3")
+const Op = Sequelize.Op
 
 const eventValidation = [
   check('name')
@@ -98,6 +100,18 @@ router.get('/category/:categoryId', asyncHandler(async (req, res) => {
   });
 
   return res.json(categoryList.map(tag => tag.Event));
+}));
+
+router.get('/search/:keyword', asyncHandler( async(req, res) => {
+  let keyword = req.params.keyword;
+  let events = await Event.findAll({
+    where: {
+      name: {
+        [Op.iLike]: `%${keyword}%`
+      }
+    }
+  })
+  return res.json(events)
 }));
 
 module.exports = router
