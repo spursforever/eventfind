@@ -30,11 +30,39 @@
   margin-left: 40px;
 }
 
+.searchbar {
+  display: flex;
+  margin-left: 15px;
+ 
+}
+
 .home-detail {
   grid-area: right;
   display: flex;
   justify-content: flex-end;
 }
+
+.search_icon {
+  height: 22px;
+  margin-left: -40px;
+  background-color: #7e7e7e;
+  margin-top: 24px;
+  border-radius: 7px;  
+}
+
+.searchingEvent {
+  padding-right: 20px;
+  align-self: center;  
+  background-color: white;
+  border-radius: 3px;
+  border-color: none;
+  height: 43px;
+  width: 600px;
+  background-position: 10px 6px;
+  background-repeat: no-repeat;
+  padding-left: 20px;
+  background-size: 20px 20px;
+  }
 
 .home-login {
   background-color: inherit;
@@ -42,19 +70,14 @@
   height: 30px;
   width: 100px;
   border-radius: 3px;
-  color: orangered;
-  font-weight: bolder;
-  font-size: 16px
 }
+
 .home-signup {
   background-color: inherit;
   border: none;
   height: 30px;
   width: 100px;
   border-radius: 3px;
-  color: orangered;
-  font-weight: bolder;
-  font-size: 16px
 }
 
 .home-logo {
@@ -143,6 +166,7 @@
   padding: 3px;
   
 }
+
 .username {
   margin-left: 23px;
 }
@@ -151,6 +175,7 @@
   cursor: pointer;
   font-weight: 600;
 }
+
 .logout_button {
   background-color: transparent;
   width: 100px;
@@ -166,5 +191,7 @@
   height: 32px;
   width: 32px;
 }
+
+
 
 

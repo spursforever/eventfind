@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import homelogo from "../../images/home_logo.jpg"
-import eventsReducer, { searchingForEvent } from "../../store/event"
+import { searchingForEvent } from "../../store/event"
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -67,13 +67,13 @@ function Navigation({ isLoaded }) {
     <div className='homepage'>
       <div className='home_container'>
         <div className='navbar_home'>
-          <img className='home-logo' onClick={homePage} src={homelogo} style={{ cursor: 'pointer' }} />
-        </div>
+          <img className='home-logo' onClick={homePage} src={homelogo} style={{ cursor: 'pointer' }} alt="" />
+        
         <div className="searchbar">
-          <input 
+          <input
+          className="searchingEvent" 
           type="search"
-          placeholder="Search your desired events"
-          className="searchingEvent"
+          placeholder="Search your desired events"          
           />
           <img
             className="search_icon"
@@ -83,7 +83,7 @@ function Navigation({ isLoaded }) {
             onClick={searchingforAEvent}
             ></img>
         </div>
-
+        </div>
         <div className='home-detail'>
           <div className='home-details'>{isLoaded && sessionLinks}</div></div>
       </div>
