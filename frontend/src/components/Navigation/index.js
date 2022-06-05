@@ -1,13 +1,15 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import homelogo from "../../images/home_logo.jpg"
+import eventsReducer, { searchingForEvent } from "../../store/event"
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const homePage = () => {
     history.push('/')
@@ -28,6 +30,17 @@ function Navigation({ isLoaded }) {
   const myEventsPage = () => {
     history.push(`/tickets/users/${sessionUser.id}`)
   }
+
+  const searchingforAEvent = () => {
+    const belovedSearchbar = document.querySelector('.searchingEvent')
+    dispatch(searchingForEvent(belovedSearchbar.value));
+    window.scroll({
+      top:625,
+      left:0,
+      behavior: 'smooth'
+    })
+  } 
+
   let sessionLinks;
 
   if (sessionUser) {
@@ -56,6 +69,21 @@ function Navigation({ isLoaded }) {
         <div className='navbar_home'>
           <img className='home-logo' onClick={homePage} src={homelogo} style={{ cursor: 'pointer' }} />
         </div>
+        <div className="searchbar">
+          <input 
+          type="search"
+          placeholder="Search your desired events"
+          className="searchingEvent"
+          />
+          <img
+            className="search_icon"
+            alt=""
+            src="../images/searchicon.png"
+            style={{ cursor: "pointer" }}
+            onClick={searchingforAEvent}
+            ></img>
+        </div>
+
         <div className='home-detail'>
           <div className='home-details'>{isLoaded && sessionLinks}</div></div>
       </div>

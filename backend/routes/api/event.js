@@ -1,4 +1,5 @@
 const express = require('express');
+const Sequelize = require('sequelize');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator')
 const { handleValidationErrors } = require('../../utils/validation')
@@ -105,7 +106,7 @@ router.get('/search/:keyword', asyncHandler( async(req, res) => {
   let keyword = req.params.keyword;
   let events = await Event.findAll({
     where: {
-      title: {
+      name: {
         [Op.iLike]: `%${keyword}%`
       }
     }
