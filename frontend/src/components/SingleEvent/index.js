@@ -56,8 +56,9 @@ const SingleEvent = () => {
        
         <div className="event-information">
             <h1>
-                <div className="eventDate">{(new Date(new Date((new Date(event.date))).getTime() + 86400000)).toString().slice(4, 16)}</div>
                 <div className="eventName">{event.name}</div>
+                <div className="eventDate">{(new Date(new Date((new Date(event.date))).getTime() + 86400000)).toString().slice(4, 16)}</div>                
+                <div className="eventLocation">{event.location}</div>
             </h1>
         </div>
         <div className="designPlace">
@@ -67,7 +68,7 @@ const SingleEvent = () => {
                         onClick={registerEvent}>Register</button>)}
         </div>
         <div className="event-description">
-            <h1>About this Event</h1>
+            <h1>About this Event:</h1>
             {event.description}
             </div>
             </div>  

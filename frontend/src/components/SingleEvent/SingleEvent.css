@@ -156,10 +156,18 @@
 }
 
 .eventDate {
-    margin-top: -80px;
-    color: darkkhaki
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: purple;
+    font-weight: 300
 }
 .eventName {
-    margin-top: 30px;
-    color: purple
+    margin-top: -80px;
+    color: darkgoldenrod;
+    font-weight: 300
+}
+
+.eventLocation {
+    font-weight: 300;
+    color: darkcyan
 }
