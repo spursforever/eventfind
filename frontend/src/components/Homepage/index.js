@@ -48,7 +48,7 @@ const AllEvents = () => {
                 <button className='category_buttons' onClick={() => { obtainCategoryId(0) }} style={{ cursor: 'pointer' }}>All Events</button>
                 <button className='category_buttons' onClick={() => { obtainCategoryId(1) }} style={{ cursor: 'pointer' }}>Food</button>
                 <button className='category_buttons' onClick={() => { obtainCategoryId(2) }} style={{ cursor: 'pointer' }}>Business</button>
-                <button id="films_and_media" className='category_buttons' onClick={() => { obtainCategoryId(3) }} style={{ cursor: 'pointer' }}>Films</button>
+                <button id="films_and_media" className='category_buttons' onClick={() => { obtainCategoryId(3) }} style={{ cursor: 'pointer' }}>Movies</button>
                 <button className='category_buttons' onClick={() => { obtainCategoryId(4) }} style={{ cursor: 'pointer' }}>Music</button>
                 <button id="sports_and_fitness" className='category_buttons' onClick={() => { obtainCategoryId(5) }} style={{ cursor: 'pointer' }}>Sports</button>
                 <button className='category_buttons' onClick={() => { obtainCategoryId(6) }} style={{ cursor: 'pointer' }}>Fashion</button>

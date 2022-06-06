@@ -44,46 +44,40 @@ const SingleEvent = () => {
 
     return (
         <>
-            <div className="entirebackground">
-                <img
-                    className="specialbackground"
-                    src={event?.imageUrl}
-                ></img>
-                <img
-                    className="images_for_event"
-                    alt={event?.name}
-                    src={event?.imageUrl} />
-                <div>
-                    <div className="event_name_container">
-                        <h1 >{event?.name}</h1>
-                    </div>
-                    <div className="about_this_event">
-                        <h2>About this event: </h2>
-                        <p>{event?.description}</p>
-                    </div>
-                    <div className="event_date_container">
-                    
-                         <h2>Date: </h2>
-                         <p> {(new Date(new Date((new Date(event.date))).getTime() + 86400000)).toString().slice(4, 16)}</p>
-                       </div> 
-                </div>
-                <div className="event_location_container">
-                    <h2>Location:</h2>
-                    <p>{event?.location}</p>
-                </div>
-                <div>
-                    {sessionUser === event.userId && <UpdateModal />}
-                    {sessionUser === event.userId && (
-                        <button className="delete_event_container" onClick={deleteEvent}>Delete Event</button>
-                    )}
-                </div>
-                <div>{sessionUser && (
+        <div>
+            <img className='blur-background'
+            src={event?.imageUrl}
+            alt="" />
+        
+        <div className="event_page">
+        <img className='real_image'
+            src={event?.imageUrl}
+            alt="" />
+       
+        <div className="event-information">
+            <h1>
+                <div className="eventDate">{(new Date(new Date((new Date(event.date))).getTime() + 86400000)).toString().slice(4, 16)}</div>
+                <div className="eventName">{event.name}</div>
+            </h1>
+        </div>
+        <div className="designPlace">
+        {sessionUser && (
                     <button
                         className="register_event"
-                        onClick={registerEvent}>Register Event</button>)}
-                </div>
+                        onClick={registerEvent}>Register</button>)}
+        </div>
+        <div className="event-description">
+            <h1>About this Event</h1>
+            {event.description}
             </div>
-
+            </div>  
+            <div>
+                    {sessionUser === event.userId && <UpdateModal />}
+                    {sessionUser === event.userId && (
+                        <button className="delete_event_container" onClick={deleteEvent} style={{ cursor: 'pointer' }}>Delete Event</button>
+                    )}
+                </div>
+               </div> 
         </>
     )
 }

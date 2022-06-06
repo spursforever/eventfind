@@ -105,6 +105,7 @@ return (
           <label> Date: </label>
           <input
           id="date"
+          type="date"
           value={date}
           className="edit_form"
           onChange={(e) => setDate(e.target.value)}>
