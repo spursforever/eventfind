@@ -90,6 +90,7 @@ router.delete('/:id(\\d+)/remove', requireAuth, asyncHandler(async (req, res) =>
   } else return res.status(401).json({ errors: ['Unauthorized.'] });
 }))
 
+// category feature
 router.get('/category/:categoryId', asyncHandler(async (req, res) => {
 
   let categoryId = parseInt(req.params.categoryId, 10);
@@ -102,6 +103,8 @@ router.get('/category/:categoryId', asyncHandler(async (req, res) => {
   return res.json(categoryList.map(tag => tag.Event));
 }));
 
+
+//search feature
 router.get('/search/:keyword', asyncHandler( async(req, res) => {
   let keyword = req.params.keyword;
   let events = await Event.findAll({

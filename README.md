@@ -61,4 +61,12 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 3. Comments
 * Users can leave comments/rating on a specific event
 
+## Homepage
+![homepage](https://user-images.githubusercontent.com/94093737/172223172-41b41f57-982f-4787-b9b5-a02a8b86d015.png)
+## Event Detail Page
+![event-detail-page](https://user-images.githubusercontent.com/94093737/172223210-219dd502-24f4-4789-a5ae-025e3831a15e.png)
+## Create Event Page
+![create-event-page](https://user-images.githubusercontent.com/94093737/172223512-670c73f0-32bd-4800-bccd-33d3b00b6823.png)
+## My Events Page
+![my-events-page](https://user-images.githubusercontent.com/94093737/172223545-120a8787-d454-4b67-b05b-131e43496a27.png)
 

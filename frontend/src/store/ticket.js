@@ -46,8 +46,7 @@ export const addOneTicket = (data) => async dispatch => {
     });    
     if (backendResponse.ok) {
         const registeredEvent = await backendResponse.json();
-        dispatch(addTicket(registeredEvent));
-        console.log("->>>>>>>>>>>>>>>>>>", registeredEvent)
+        dispatch(addTicket(registeredEvent));        
         return registeredEvent
     }
 }
@@ -58,8 +57,7 @@ export const deleteTicket = (data) => async dispatch => {
     });
     if (backendResponse.ok) {
         dispatch(removeTicket(data))
-        const ticket = await backendResponse.json();
-        
+        const ticket = await backendResponse.json();        
     }
 }
 
