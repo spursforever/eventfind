@@ -5,7 +5,7 @@
     position: absolute;
     margin-left: 140px;
     margin-right: auto;
-    margin-top: -690px;
+    margin-top: -640px;
     height: 1000px;
     background-color: white;
     width: 1150px;
@@ -21,7 +21,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     /* position: relative; */
-    width: 100%;
+    width: 100%;    
     margin-left: 0;
 }
 
@@ -120,7 +120,7 @@
     margin-left: 950px;
     font-weight: 600;
     display: inline-block;
-    margin-top: -260px;
+    margin-top: -210px;
     zoom: 1;
     transition: all .2s ease-out;
     vertical-align: middle;
@@ -150,7 +150,7 @@
     vertical-align: middle;
     position: absolute;
     height: 36px;
-    margin-top: -190px;
+    margin-top: -140px;
     border: 2px solid transparent;
     padding: 0 120px;
     box-sizing: border-box;
