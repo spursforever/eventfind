@@ -11,6 +11,7 @@
     width: 1150px;
     align-content: center;
     border-radius: 5px;
+    overflow: hidden
 } 
 
 .blur-background {
@@ -22,12 +23,14 @@
     /* position: relative; */
     width: 100%;
     margin-left: 0;
+    overflow: hidden
 }
 
 .real_image {
     position: absolute;
     margin-left: auto;
-    margin-right: auto;    
+    margin-right: auto;
+    overflow: hidden    
 }
 
 .event-information {
@@ -35,6 +38,7 @@
     height: 400px;
     background-color: rgba(230, 230, 230, 0.9);
     border-radius: 8px;
+    overflow: hidden
 }
 
 .event-information h1{
@@ -48,6 +52,7 @@
     font-size: 20px;
     letter-spacing: .5px;
     word-break: break-word;
+    overflow: hidden
 }
 
 .design-place {
@@ -67,6 +72,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     box-sizing: border-box;
+    overflow: hidden
 }
 
 .register_event {
