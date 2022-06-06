@@ -1,3 +1,6 @@
+.last-sec {
+    overflow: scroll;
+}
 .event_page {
     position: absolute;
     margin-left: 140px;

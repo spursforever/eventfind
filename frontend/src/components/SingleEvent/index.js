@@ -44,7 +44,7 @@ const SingleEvent = () => {
 
     return (
         <>
-        <div>
+        <div className="last-sec">
             <img className='blur-background'
             src={event?.imageUrl}
             alt="" />
@@ -65,7 +65,8 @@ const SingleEvent = () => {
         {sessionUser && (
                     <button
                         className="register_event"
-                        onClick={registerEvent}>Register</button>)}
+                        onClick={registerEvent}
+                        style={{ cursor: "pointer" }}>Register</button>)}
         </div>
         <div className="event-description">
             <h1>About this Event:</h1>

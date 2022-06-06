@@ -73,7 +73,7 @@ function Navigation({ isLoaded }) {
           <input
           className="searchingEvent" 
           type="search"
-          placeholder="Search your desired events"          
+          placeholder="Search your desired event"          
           />
           <img
             className="search_icon"

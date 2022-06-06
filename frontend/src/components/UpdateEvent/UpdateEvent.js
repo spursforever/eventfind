@@ -7,7 +7,7 @@ const UpdateModal = () => {
     
     return (
         <>
-        <button className="edit_event_container" onClick={()=> setShowModal(true)}>Edit Event</button>
+        <button className="edit_event_container" onClick={()=> setShowModal(true)} style={{ cursor: 'pointer' }} >Edit Event</button>
         {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <UpdateEvent onClose={() => setShowModal(false)}/>
