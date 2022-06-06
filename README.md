@@ -50,5 +50,15 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 3. Ticket
 * Logged-in users can register event.
 * They can also cancel the registration that they just made
+* 4. Seach
+* All users can search displayed events
+
+## Future Implementations
+1. Google Map API
+* Users should be able to see the exact location of the event
+2. Bookmark
+* Users should be able to bookmark an event
+3. Comments
+* Users can leave comments/rating on a specific event
 
 
