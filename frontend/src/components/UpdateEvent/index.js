@@ -17,12 +17,7 @@ const UpdateEvent = ({ onClose }) => {
     const [date, setDate] = useState(event?.date.slice(0, 10) || "" );
     const [location, setLocation] = useState(event?.location || "");
     const [errors, setErrors] = useState([]);
-    // const imageUpload = (e) => {
-    //     const awsFile = e.target.files[0];
-    //     if (awsFile) {
-    //         setImage(awsFile)
-    //     }
-    // }
+   
 
 
     useEffect(() => {
