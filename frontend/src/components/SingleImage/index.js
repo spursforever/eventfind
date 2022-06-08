@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
-import { getOneImage } from '../../store/images';
+import { getSingleImage } from '../../store/images';
+import ImageEdit from '../ImageEdit';
 
 
 const SingleImage = () => {
@@ -14,7 +15,7 @@ const SingleImage = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
-    dispatch(getOneImage(id));
+    dispatch(getSingleImage(id));
   }, [dispatch, id]);
 
   const openCloseMenu = () => {
@@ -25,31 +26,35 @@ const SingleImage = () => {
 
   return (
     <div>
-        <div>
-          <div >
-            <NavLink to="/images" >
-               Back to Images</NavLink>
-            </div>
-                <img  src={singleImage?.imageUrl} alt={singleImage?.content} />
-
-
+      <div>
+        <div >
+          <NavLink to="/images" >
+            Back to Images</NavLink>
         </div>
+        <img src={singleImage?.imageUrl} alt={singleImage?.content} />
+
+
+      </div>
+
+      <div >
 
         <div >
+          <div >
+            <h2>Hi, {sessionUser.username}</h2>
+            <button id="edit-image-button" onClick={openCloseMenu}>
+              <i ></i>
+            </button>
+          </div>
+          <p>Content: {singleImage?.content}</p>
 
-            <div >
-                <div >
-                <h2>Hi, {sessionUser.username}</h2>
-                <button id="edit-image-button" onClick={openCloseMenu}>
-                  <i ></i>
-                </button>
-                </div>
-                <p>Content: {singleImage?.content}</p>
-                
-            </div>
         </div>
-        
-        )
+      </div>
+      {showMenu && (
+        <div >
+          <ImageEdit singleImage={singleImage} />
+        </div>
+      )}
+      )
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import Images from "./components/Images";
 import SingleImage from "./components/SingleImage";
 import ImageUpload from "./components/ImageUpload"
+import ImageEdit from "./components/ImageEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/images/upload">
             <ImageUpload />
+          </Route>
+          <Route exact path="images/:id/edit">
+             <ImageEdit />
           </Route>
                             
         </Switch>

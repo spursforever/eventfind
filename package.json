@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/spursforever/solo-project/issues"
   },
-  "homepage": "https://github.com/spursforever/solo-project#readme"
+  "homepage": "https://github.com/spursforever/solo-project#readme",
+  "dependencies": {
+    "webpack": "^5.72.0"
+  }
 }

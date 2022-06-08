@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { getImage } from "../../store/images"
+import {getSingleImage } from "../../store/images"
 import { useEffect } from "react"
 import SingleImage from "../SingleImage"
 import { Route } from "react-router-dom"
@@ -14,7 +14,7 @@ const Images =  () => {
     (image) => image.userId === sessionUser.id
   );
     useEffect(() => {
-        dispatch(getImage())
+        dispatch(getSingleImage())
     }, [dispatch])
     
 return (
