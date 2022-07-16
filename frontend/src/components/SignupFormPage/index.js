@@ -15,18 +15,32 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/" />;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-    }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
-  };
+    const validationErrors = []
+    if (!email)
+      validationErrors.push("Please enter your email")
+    if (!email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/) ) 
+      validationErrors.push("Please enter a valid email address")
+    if (!username)
+      validationErrors.push("Please enter your username")
+      if (!password)
+      validationErrors.push("Please enter your password")
+      if (!confirmPassword)
+      validationErrors.push("Please enter your password again")
+      if(password !== confirmPassword)
+      validationErrors.push("Passwords field must match confirm password field")
+      if (validationErrors.length > 0) {
+        setErrors(validationErrors)
+        return
+      };
+      if (password === confirmPassword) {
+        const data = await dispatch(sessionActions.signup(email, username, password, confirmPassword));
+        if (data) {
+          setErrors(data)
+        }
+      }
+    };   
 
   return (
       <div className="signups">
@@ -37,7 +51,7 @@ function SignupFormPage() {
           </div>
     <form onSubmit={handleSubmit}>
       <ul className="form_lists">
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => <li key={idx} className="signup-errors">{error}</li>)}
       </ul>
       <label>
         Email
@@ -45,8 +59,7 @@ function SignupFormPage() {
         <input
           type="text"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
+          onChange={(e) => setEmail(e.target.value)}          
         />
         </div>
       </label>
@@ -56,8 +69,7 @@ function SignupFormPage() {
         <input
           type="text"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
+          onChange={(e) => setUsername(e.target.value)}          
         />
         </div>
       </label>
@@ -67,8 +79,7 @@ function SignupFormPage() {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
+          onChange={(e) => setPassword(e.target.value)}          
         />
         </div>
       </label>
@@ -78,8 +89,7 @@ function SignupFormPage() {
         <input
           type="password"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
+          onChange={(e) => setConfirmPassword(e.target.value)}          
         />
         </div>
       </label>
