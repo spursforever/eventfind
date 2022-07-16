@@ -46,7 +46,7 @@ function LoginForm() {
     <form onSubmit={handleSubmit}>
       <ul className="input_list">
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <li key={idx} className="log-in-errors">{error}</li>
         ))}
       </ul>
       <label>
@@ -56,7 +56,7 @@ function LoginForm() {
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          required
+          // required
         />
           </div>
       </label>
@@ -67,7 +67,7 @@ function LoginForm() {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          // required
         />
         </div>
       </label>

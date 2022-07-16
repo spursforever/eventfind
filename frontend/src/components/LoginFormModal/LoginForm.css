@@ -108,3 +108,9 @@ form {
 label {
     margin-left: 10px;
 }
+
+.log-in-errors {
+  color: red;
+  font-weight: 600;
+  margin: 10px 0
+}

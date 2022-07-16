@@ -8,7 +8,6 @@ const CreateEvent = () => {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const dispatch = useDispatch();
-
     const [name, setName] = useState("");
     const [image, setImage] = useState(null)
     const [description, setDescription] = useState("");

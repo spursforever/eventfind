@@ -57,7 +57,7 @@ form {
       "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
     font-weight: 300;
     color: rgb(97, 97, 97);
-    overflow: scroll   
+    overflow: hidden 
   }
 
 .form_details input {
@@ -84,5 +84,12 @@ form {
 }
 
 label {
+    /* margin-top: 5px; */
     margin-left: 10px;
   }
+
+.signup-errors {
+  color: red;
+  font-weight: 600;
+  margin: 10px 0
+}
