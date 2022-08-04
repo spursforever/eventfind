@@ -36,12 +36,12 @@ function ProfileButton({ user }) {
     <>
     
        {/* <i className="fas fa-user-circle avatar" onClick={openMenu}></i> */}
-      <button className="profileuser" onClick={openMenu}>Hi {user.username}!</button>
+      <button className="profileuser" onClick={openMenu} style={{cursor:'pointer'}}>Hi {user.username}!</button>
       <div className="profile">
 
       </div>
       {showMenu && (
-        <ul className="coolstuff" onMouseLeave={closeMenu}>
+        <ul className="coolstuff" onMouseLeave={closeMenu} >
           <li className="username">{user.username}</li>          
           <li className="userLogout">
             <button className="logout_button" style={{cursor:'pointer'}} onClick={logout}>Log Out</button>
