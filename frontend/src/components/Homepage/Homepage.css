@@ -28,10 +28,10 @@
 .event_design {
     border: 2px solid  #e6e6e6;
     border-radius: 10px;
-    height: 320px;
+    height: 280px;
     margin-top: 20px;
     padding: 8px;
-    width: 400px;
+    width: 320px;
     
 }
 
@@ -43,7 +43,7 @@
     color: orangered;
     margin-left: 50px;
     margin-top: 10px;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .the_world {
@@ -52,11 +52,12 @@
     font-size: 70%
 }
 
-.images {
+.images {    
     padding-bottom: 10px;
 }
 
 .imgaes img {
+    
     object-fit: cotain;
     width: 100%;
 }
