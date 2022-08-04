@@ -13,14 +13,14 @@ h1 {
     justify-content: left;
     margin-left: 15px;
     font-size: 45px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+    font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 
 }
 
 .error_info {
     color: orangered;
   font-weight: 400;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   transition: opacity 200ms ease-in;
 }
 
