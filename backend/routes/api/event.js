@@ -40,8 +40,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
   let singleEvent = await Event.findByPk(eventId,
     {
       include: [User, { model: Ticket, include: User }]
-    });
-  console.log("--,-,--,-,-,-,-,-,-,", singleEvent)
+    });  
   return res.json(singleEvent)
 }));
 

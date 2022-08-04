@@ -32,7 +32,7 @@ function LoginForm() {
         setPassword("password");
       }}
       >
-      Demo User Login
+      Demo Login
     </button>
   )
 
@@ -55,8 +55,7 @@ function LoginForm() {
         <input
           type="text"
           value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          // required
+          onChange={(e) => setCredential(e.target.value)}          
         />
           </div>
       </label>
@@ -66,8 +65,7 @@ function LoginForm() {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          // required
+          onChange={(e) => setPassword(e.target.value)}          
         />
         </div>
       </label>

@@ -19,10 +19,7 @@ const CreateEvent = () => {
         const validationErrors = [];
         if (!name) {
             validationErrors.push("Please provide an event name.")
-        }
-        // } if (!imageUrl) {
-        //     validationErrors.push("Please provide an image URL of the event.")
-        // }
+        }        
         if (!description) {
             validationErrors.push("Please provide an event description.")
         } if (!date) {

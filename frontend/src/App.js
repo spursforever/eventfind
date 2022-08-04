@@ -10,6 +10,7 @@ import CreateEvent from "./components/CreateEvent";
 import LoginForm from "./components/LoginFormModal/LoginForm";
 import MyEvents from "./components/MyEvents";
 
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,7 +19,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <>    
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -39,10 +40,10 @@ function App() {
          </Route>
          <Route path="/tickets/users/:id" exact={true}>
            <MyEvents />
-         </Route>
-         
-        </Switch>
-      )}
+         </Route>         
+          </Switch>
+        )}
+        
     </>
   );
 }
