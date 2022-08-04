@@ -25,7 +25,7 @@
 }
 
 .logo {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: 800;
   font-size: 32px;
   letter-spacing: 1px;
@@ -38,12 +38,12 @@
     color: #f05537;
     font-size: 19pt;
     font-weight: bolder;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
     margin-right: 190px;
     margin-bottom: 20px;
 }
 .logo h1 {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Neue Plak", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
   font-weight: 800;
   font-size: 32px;
   letter-spacing: 1px;

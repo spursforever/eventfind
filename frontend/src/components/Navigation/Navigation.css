@@ -57,7 +57,7 @@
   border-radius: 3px;
   border-color: none;
   height: 43px;
-  width: 500px;
+  width: 600px;
   background-position: 10px 6px;
   background-repeat: no-repeat;
   padding-left: 20px;
@@ -65,26 +65,30 @@
   }
 
 .home-login {
-  background-color: inherit;
+  background-color: orangered;
   border: none;
   height: 30px;
   width: 100px;
-  border-radius: 3px;
+  border-radius: 20px;
+  color: black;
+  font-weight: bold;
+  margin-right: 40px;
 }
 
 .home-signup {
-  background-color: inherit;
+  background-color: green;
   border: none;
   height: 30px;
   width: 100px;
-  border-radius: 3px;
+  border-radius: 20px;
+  font-weight: bold;
 }
 
 .home-logo {
   height:60px;
   width: 120px;
   margin-bottom: 5px;
-  margin-right: 10px;
+  margin-right: 40px;
   align-self: center;
   cursor: pointer;
   object-fit: cover;
@@ -152,7 +156,7 @@
   background-color: #eeeeee;
   font-weight: 350; 
   margin-top: 50px; 
-  margin-left: 280px;
+  margin-left: 320px;
   border-radius: 20px;
   width: 120px;
   height: fit-content;

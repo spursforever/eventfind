@@ -4,7 +4,7 @@ import './Footer.css'
 const Footer = () => {
     return (
         <footer className="footer_container">
-            © Eventlight created by Dayton Chen
+            © Eventfind created by Dayton Chen
             <div className="github_link">
                 <a href="https://github.com/spursforever/eventfind">
                 <FaGithub id="my-github" />                    

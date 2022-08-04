@@ -12,8 +12,7 @@ const SingleEvent = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const event = useSelector((state) => state.event[id]);
-    const sessionUser = useSelector((state) => state.session.user?.id);
-    console.log('------------------->', event)
+    const sessionUser = useSelector((state) => state.session.user?.id);    
     useEffect(() => {
         dispatch(displaySingleEvent(id));
     }, [dispatch, id])

@@ -7,8 +7,7 @@ import "./UpdateEvent.css"
 const UpdateEvent = ({ onClose }) => {
     const history = useHistory();
     const {id} = useParams();
-    const event = useSelector((state) => state.event[id]);
-   
+    const event = useSelector((state) => state.event[id]);   
     
     const dispatch = useDispatch();
     const [name, setName] = useState(event?.name || "");
@@ -16,9 +15,7 @@ const UpdateEvent = ({ onClose }) => {
     const [description, setDescription] = useState(event?.description || "");
     const [date, setDate] = useState(event?.date.slice(0, 10) || "" );
     const [location, setLocation] = useState(event?.location || "");
-    const [errors, setErrors] = useState([]);
-   
-
+    const [errors, setErrors] = useState([]);  
 
     useEffect(() => {
         const validationErrors = [];

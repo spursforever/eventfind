@@ -74,7 +74,6 @@ const MyEvents = () => {
 
     return (
         <>
-
             {detail}
         </>
     )

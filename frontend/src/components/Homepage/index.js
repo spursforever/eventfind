@@ -61,8 +61,8 @@ const AllEvents = () => {
                         <div className="event_design">
                             <div className="images">
                                 <img
-                                    height={250}
-                                    width={380}
+                                    height={200}
+                                    width={300}
                                     alt={event?.name}
                                     src={event?.imageUrl}
                                 />

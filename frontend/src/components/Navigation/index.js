@@ -48,7 +48,7 @@ function Navigation({ isLoaded }) {
       <>
         <button className='navigation-create' onClick={createEventPage} style={{ cursor: 'pointer' }}>Create Event</button>
         <button className='navigation-myevents' onClick={myEventsPage} style={{ cursor: 'pointer' }}>My Events</button>
-        <ProfileButton user={sessionUser} />
+        <ProfileButton user={sessionUser} style={{ cursor: 'pointer' }} />
       </>
     );
   }
@@ -69,8 +69,8 @@ function Navigation({ isLoaded }) {
         <div className='navbar_home'>
           <img className='home-logo' onClick={homePage} src={homelogo} style={{ cursor: 'pointer' }} alt="" />
         
-        <div className="searchbar">
-          <input
+        <div className="searchbar">          
+          <input          
           className="searchingEvent" 
           type="search"
           placeholder="Search your desired event"          
@@ -81,7 +81,8 @@ function Navigation({ isLoaded }) {
             src="../images/searchicon.png"
             style={{ cursor: "pointer" }}
             onClick={searchingforAEvent}
-            ></img>
+            >              
+            </img>
         </div>
         </div>
         <div className='home-detail'>
