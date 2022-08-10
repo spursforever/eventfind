@@ -114,7 +114,7 @@ const CreateEvent = () => {
                 >Submit Event</button>
                 <button
                     className="cancel_event"
-                    type="submit"
+                    type="submit"                    
                     onClick={() => history.push('/')}> Cancel Event</button>
             </form>
         </div>
