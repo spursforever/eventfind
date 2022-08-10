@@ -69,8 +69,10 @@ function Navigation({ isLoaded }) {
         <div className='navbar_home'>
           <img className='home-logo' onClick={homePage} src={homelogo} style={{ cursor: 'pointer' }} alt="" />
         
-        <div className="searchbar">          
-          <input          
+        <div className="searchbar">
+                  
+          <input
+                   
           className="searchingEvent" 
           type="search"
           placeholder="Search your desired event"          
@@ -83,6 +85,7 @@ function Navigation({ isLoaded }) {
             onClick={searchingforAEvent}
             >              
             </img>
+           
         </div>
         </div>
         <div className='home-detail'>
