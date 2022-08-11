@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import { createSingleEvent } from "../../store/event";
 import { useSelector, useDispatch } from "react-redux"
 import "./CreateEvent.css"
@@ -14,20 +14,20 @@ const CreateEvent = () => {
     const [date, setDate] = useState("");
     const [location, setLocation] = useState("");
     const [errors, setErrors] = useState([]);
-
-    useEffect(() => {
-        const validationErrors = [];
-        if (!name) {
-            validationErrors.push("Please provide an event name.")
-        }        
-        if (!description) {
-            validationErrors.push("Please provide an event description.")
-        } if (!date) {
-            validationErrors.push("Please provide a date of the event.")
-        } if (!location) {
-            validationErrors.push("Please provide event's location.")
-        } setErrors(validationErrors)
-    }, [name, description, date, location, image, dispatch])
+    
+    // useEffect(() => {
+    //     const validationErrors = [];
+    //     if (!name) {
+    //         validationErrors.push("Please provide an event name.")
+    //     }        
+    //     if (!description) {
+    //         validationErrors.push("Please provide an event description.")
+    //     } if (!date) {
+    //         validationErrors.push("Please provide a date of the event.")
+    //     } if (!location) {
+    //         validationErrors.push("Please provide event's location.")
+    //     } setErrors(validationErrors)
+    // }, [name, description, date, location, image, dispatch])
 
 
     const eventSubmission = (e) => {
@@ -40,9 +40,24 @@ const CreateEvent = () => {
             location,
             image
         };
+        const validationErrors = [];
+        if (!name) {
+            validationErrors.push("Please provide an event name.")
+        }        
+        if (!description) {
+            validationErrors.push("Please provide an event description.")
+        } if (!image) {
+            validationErrors.push("Please provide an event image")
+        } 
+        if (!date) {
+            validationErrors.push("Please provide a date of the event.")
+        } if (!location) {
+            validationErrors.push("Please provide event's location.")
+        } setErrors(validationErrors)
+        
         dispatch((createSingleEvent(payload)))
             .then((res) => {
-                if (res) history.push("/");
+                if (res) history.push('/');
             })
             .catch(async (err) => {
                 const errors = await err.json();
@@ -114,7 +129,7 @@ const CreateEvent = () => {
                 >Submit Event</button>
                 <button
                     className="cancel_event"
-                    type="submit"
+                    type="submit"                    
                     onClick={() => history.push('/')}> Cancel Event</button>
             </form>
         </div>

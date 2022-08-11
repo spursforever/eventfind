@@ -133,7 +133,7 @@
   cursor: pointer;
   margin-top: 5px;
   color: orangered;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .username:hover {
@@ -146,6 +146,13 @@
   border:none;
   color: orangered;
   background-color: white;
+  margin-top: 5px;
+  height: 30px;
+  width: 150px;
+  border-radius: 3px;
+  font-weight: 500;
+  cursor: pointer;
+  font-weight: bold; 
 }
 
 .coolstuff  {

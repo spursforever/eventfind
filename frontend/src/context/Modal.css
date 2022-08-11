@@ -22,3 +22,42 @@
     position: absolute;
     background-color:white;
   }
+
+  #delete-event-modal {
+    position: fixed;
+    top: 30px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    min-height: 400px;
+  }
+
+  #delete-event-modal-background {
+    position: fixed;  
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  #delete-event-modal-content {
+    position: relative;
+  background-color:white;
+  border-radius: 16px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 400px;
+  height: 240px;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  padding: 20px 10px 24px;
+  text-align: center;
+  }

@@ -36,3 +36,18 @@ export function Modal({ onClose, children }) {
     modalNode
   );
 }
+
+export function DeleteEventModal({ onClose, children }) {
+  const modalNode = useContext(ModalContext);
+  if (!modalNode) return null;
+
+  return ReactDOM.createPortal(
+    <div id="delete-event-modal">
+      <div id="delete-event-modal-background" onClick={onClose} />
+      <div id="delete-event-modal-content">
+        {children}
+      </div>
+    </div>,
+    modalNode
+  );
+}
