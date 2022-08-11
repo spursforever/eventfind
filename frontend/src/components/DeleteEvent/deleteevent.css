@@ -1,0 +1,55 @@
+.delete-warning {
+    
+    color: orange;
+    margin-top: -0.4em;
+    margin-bottom: -0.1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.delete-event {
+    box-sizing: border-box;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(0,255,0);opacity:0.6;    
+    color: black;
+    width: 28%;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+    margin-bottom: 5px;        
+}
+.delete-event:hover {
+    background-color:green;
+    opacity: 1;
+}
+
+.cancel-delete {
+    box-sizing: border-box;
+    height: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 0 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: rgb(255, 30, 30);opacity:0.5 ;    
+    color: black;
+    width: 28%;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+}
+
+.cancel-delete:hover {
+    background-color: red;
+    opacity: 1;
+}
