@@ -1,12 +1,14 @@
-
-.last-sec {
+* {
     overflow: visible;
+}
+.last-sec {
+    overflow: hidden;
 }
 
 .event_page {
     position: absolute;
     margin-left: 140px;
-    margin-right: auto;
+    
     margin-top: -640px;
     height: 1000px;
     background-color: white;

@@ -107,7 +107,7 @@ return (
           value={date}
           className="edit_form"
           onChange={(e) => setDate(e.target.value)}>
-
+            
           </input>
           </div>
           <div className="location_container">
