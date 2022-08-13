@@ -50,7 +50,7 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 2. Events
 * All users can look at the events and their details
 * Logged-in users can create, edit, and delete events
-* 
+* Logged-in users can view events in a specific category
 3. Ticket
 * Logged-in users can register event.
 * They can also cancel the registration that they just made
@@ -66,7 +66,7 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 * Users can leave comments/rating on a specific event
 
 ## Homepage
-![homepage](https://user-images.githubusercontent.com/94093737/172223172-41b41f57-982f-4787-b9b5-a02a8b86d015.png)
+![image](https://user-images.githubusercontent.com/94093737/184510404-cc37966f-dc1e-4c0f-bb98-14e13e33071e.png)
 ## Event Detail Page
 ![event-detail-page](https://user-images.githubusercontent.com/94093737/172223210-219dd502-24f4-4789-a5ae-025e3831a15e.png)
 ## Create Event Page
