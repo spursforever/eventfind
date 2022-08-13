@@ -50,10 +50,11 @@ Welcome to Eventfind! This project is inspired by [Eventbrite](https://www.event
 2. Events
 * All users can look at the events and their details
 * Logged-in users can create, edit, and delete events
+* 
 3. Ticket
 * Logged-in users can register event.
 * They can also cancel the registration that they just made
-* 4. Seach
+4. Seach
 * All users can search displayed events
 
 ## Future Implementations
