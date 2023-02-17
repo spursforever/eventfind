@@ -1,12 +1,13 @@
 * {
     margin: 0;
 }
-#splashpage {
+.splashpage {
     position: relative;
-
-    height: 580px; 
-    width: 100%;
-    object-fit: cover;
+    margin-left: 20px;
+    margin-top: 90px;
+    height: 560px; 
+    width: 98%;
+    object-fit: fill;
 }
 
 
